@@ -1,0 +1,14 @@
+//é onde colocamos resets, box-sizing, etc.
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: $font;
+}
+
+html,
+body {
+    min-height: 100%;
+}
