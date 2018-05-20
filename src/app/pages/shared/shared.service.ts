@@ -8,12 +8,13 @@ import { catchError, last, map, tap } from 'rxjs/operators';
 export class SharedService {
 
     isLoading = false;
+    headers = new Headers();
     private shouldShowDebugMessages = false;
 
     constructor(private _http: HttpClient) { }
 
     getBTC() {
-        return this._http.get(`https://www.mercadobitcoin.net/api/BTC/ticker/`, {
+        return this._http.get(`http://api.promasters.net.br/cotacao/v1/valores?moedas=USD,BTC&alt=json`, {
             reportProgress: true,
             observe: 'events'
         }).pipe(
