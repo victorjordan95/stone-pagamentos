@@ -1,0 +1,7 @@
+.flexrow{
+    @media (min-width: $screen-desktop-min) {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+}
