@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CotacaoComponent } from './pages/cotacao/cotacao.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         HomeComponent,
+        CotacaoComponent,
     ],
     imports: [
         BrowserModule,
