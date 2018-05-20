@@ -18,7 +18,7 @@
     .currency {
         align-self: center;
         color: $texto;
-        font-size: 1.5em;
+        font-size: 1.7em;
     }
 
     .icon {
@@ -48,10 +48,33 @@
     &.inline {
         display: flex;
         justify-content: space-between;
+        @media (min-width: $screen-desktop-min) {
+            flex-flow: column wrap;
+            justify-content: space-between;
+
+        }
+
+        .icon {
+            align-self: center;
+            @media (min-width: $screen-desktop-min) {
+                align-self: flex-start;
+            }
+        }
 
         .card-mountant {
             color: $texto;
+            display: block;
             font-size: 1.1em;
+            text-align: right;
+            @media (min-width: $screen-desktop-min) {
+                text-align: left;
+            }
+        }
+
+        .subtitle {
+            color: $cinza-claro;
+            font-size: 0.9em;
+            line-height: 1;
         }
 
     }

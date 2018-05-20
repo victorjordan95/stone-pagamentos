@@ -1,5 +1,5 @@
 .menu {
-    background-color: #F5F5F5;
+    background-color: #FFF;
     box-shadow: 0 0 1px 0px #a9a9a9;
     bottom: 0;
     display: flex;
@@ -34,7 +34,7 @@
     }
 
     .icon {
-        fill: #757575;
+        fill: #808080;
         height: 25px;
         width: 25px;
     }
@@ -50,6 +50,9 @@
     }
 
     .active {
+        @media (min-width: $screen-desktop-min) {
+            background: $verde-claro;
+        }
         .icon {
             fill: $verde-escuro;
         }
