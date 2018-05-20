@@ -1,8 +1,26 @@
 // estilos para os headings h1-h6, blockquotes, a, buttons, etc
 
 main {
-    min-height: calc(100vh - 70px - 44px);
-    position: relative;
+    // Calcula o tamanho da pagina inteira e subtrai
+    // 55px que é o valor da barra de navegação
+    min-height: calc(100vh - 55px);
+    @media (min-width: $screen-desktop-min) {
+        min-height: calc(100vh);
+    }
+}
+
+.container {
+    padding: 16px 16px 0;
+    @media (min-width: $screen-desktop-min) {
+        padding: 16px 16px 0 86px;
+    }
+}
+
+.fluid-container {
+    padding: 0;
+    @media (min-width: $screen-desktop-min) {
+        padding: 0 0 0 86px;
+    }
 }
 
 img {
@@ -34,8 +52,4 @@ a, a:hover, a:focus {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
-}
-
-thead>tr>th {
-    cursor: pointer;
 }
