@@ -5,7 +5,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    height: 55px;
+    height: 60px;
     position: fixed;
     width: 100%;
     z-index: 3;
@@ -29,12 +29,6 @@
             width: 100%;
             &:hover {
                 background: $verde-claro;
-                // .menu-label {
-                //     color: $verde-escuro;
-                // }
-                // .icon {
-                //     fill: $verde-escuro;
-                // }
             }
         }
     }

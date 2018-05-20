@@ -1,0 +1,44 @@
+.card {
+    background-color: #FAFAFA;
+    border-radius: 4px;
+    box-shadow: 0 0 8px 1px rgba(222, 222, 222, 0.25);
+    padding: 16px;
+
+    > .card-header {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+
+    .icon-dollar-sign {
+        fill: $verde-escuro;
+        height: 25px;
+        width: 25px;
+    }
+
+    .icon-plus {
+        fill: #424242;
+        height: 20px;
+        width: 20px;
+    }
+
+    > .card-body {
+
+        > .title {
+            color: $verde-principal;
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        > .subtitle {
+            color: $cinza-claro;
+            font-size: 0.9em;
+            line-height: 1;
+        }
+
+    }
+
+
+}
