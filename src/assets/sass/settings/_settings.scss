@@ -1,2 +1,15 @@
 //Em geral, são as variáveis globais que vão definir cores, 
 //espaçamentos e outras configurações desejadas para o funcionamento do seu framework em si. 
+.icon {
+    display: inline-block;
+    height: 1em;
+    stroke-width: 0;
+    width: 1em;
+}
+
+$verde-principal: #95ca40;
+$verde-escuro: #1b3a22;
+$verde-claro: #d7eace;
+
+$screen-tablet-min: 768px;
+$screen-desktop-min: 1024px;

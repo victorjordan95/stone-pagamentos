@@ -1,0 +1,66 @@
+.menu {
+    background-color: #F5F5F5;
+    box-shadow: 0 0 1px 0px #a9a9a9;
+    bottom: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 55px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    @media (min-width: $screen-desktop-min) {
+        top: 0;
+        width: 70px;
+        height: 100vh;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+    }
+
+
+    .menu-link {
+        align-self: center;
+        align-items: center;
+        display: flex;
+        flex-flow: column wrap;
+        @media (min-width: $screen-desktop-min) {
+            padding: 24px 0;
+            transition: background ease 0.7s;
+            width: 100%;
+            &:hover {
+                background: $verde-claro;
+                // .menu-label {
+                //     color: $verde-escuro;
+                // }
+                // .icon {
+                //     fill: $verde-escuro;
+                // }
+            }
+        }
+    }
+
+    .icon {
+        fill: #757575;
+        height: 25px;
+        width: 25px;
+    }
+
+    .menu-label {
+        color: #757575;
+        font-size: 8px;
+        margin: 8px 0 0;
+        text-transform: uppercase;
+        @media (min-width: $screen-desktop-min) {
+            font-size: 10px;
+        }
+    }
+
+    .active {
+        .icon {
+            fill: $verde-escuro;
+        }
+        .menu-label {
+            color: $verde-escuro;
+        }
+    }
+}

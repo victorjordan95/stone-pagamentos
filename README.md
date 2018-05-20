@@ -1,14 +1,19 @@
 # StoneTeste
+Este projeto tem como objetivo a criação de uma carteira digital, sendo o projeto aplicado como teste para vaga de desenvolvedor front-end. A aplicação foi gerada com [Angular CLI](https://github.com/angular/angular-cli) versão 6.0.0.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+## Trello
+Para ter uma melhor visualização do andamento do projeto, foi criado um trello onde está dividido em pequenas tasks. O board no trello foi criado usando os conceitos das metodologias ágeis. 
 
-## Development server
+Você pode visualizar o kanban através [deste link](https://trello.com/b/9Ez9admf/stone-pagamentos)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Executando a aplicação
 
-## Code scaffolding
+Necessário ter instalado localmente:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [NodeJS](https://nodejs.org/en/)
+* [AngularCLI](https://cli.angular.io/)
+
+Rodar em seu terminal `ng serve` para ter o server dev, que estará disponível na URL `http://localhost:4200/`. 
 
 ## Build
 
