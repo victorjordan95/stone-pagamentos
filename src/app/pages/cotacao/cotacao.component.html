@@ -9,7 +9,7 @@
             <use attr.xlink:href="#{{item.icon}}"></use>
         </svg>
         <div class="currency-info">
-            <span class="card-mountant"> {{item.valor}} </span>
+            <span class="card-mountant"> {{item.valor | number : '1.2-2'}} </span>
             <p class="subtitle">
                 {{item.data}}
             </p>
