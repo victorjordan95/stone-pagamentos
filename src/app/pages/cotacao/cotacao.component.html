@@ -1,33 +1,22 @@
-<section class="section container flexrow">
+<section class="section container flexrow" *ngIf="!_sharedService.isLoading">
 
     <h1 class="title">
         Cotação
     </h1>
 
-    <div class="card inline">
-        <svg class="icon icon-bitcoin">
-            <use xlink:href="#icon-bitcoin"></use>
+    <div class="card inline" *ngFor="let item of currencies">
+        <svg attr.class="icon {{item.icon}}">
+            <use attr.xlink:href="#{{item.icon}}"></use>
         </svg>
         <div class="currency-info">
-            <span class="card-mountant"> 0 </span>
+            <span class="card-mountant"> {{item.valor}} </span>
             <p class="subtitle">
-                20/05/2018 - 11:20
+                {{item.data}}
             </p>
         </div>
 
     </div>
 
-    <div class="card inline">
-        <svg class="icon icon-dollar-sign">
-            <use xlink:href="#icon-dollar-sign"></use>
-        </svg>
-        <div class="currency-info">
-            <span class="card-mountant"> 0 </span>
-            <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-
-    </div>
 
 </section>
+

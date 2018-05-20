@@ -14,7 +14,7 @@ export class SharedService {
     constructor(private _http: HttpClient) { }
 
     getBTC() {
-        return this._http.get(`http://api.promasters.net.br/cotacao/v1/valores?moedas=USD,BTC&alt=json`, {
+        return this._http.get(`https://api.promasters.net.br/cotacao/v1/valores?moedas=USD,BTC&alt=json`, {
             reportProgress: true,
             observe: 'events'
         }).pipe(

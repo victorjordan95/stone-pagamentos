@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class CotacaoComponent implements OnInit {
 
     private currencySubscription: Subscription;
-    currencies;
+    currencies: any;
 
     constructor(private _sharedService: SharedService) { }
 
@@ -20,12 +20,22 @@ export class CotacaoComponent implements OnInit {
     }
 
     getCurrenciesValue() {
-        debugger;
         this.currencySubscription = this._sharedService.getBTC()
             .subscribe(
                 currencies => {
-                    this.currencies = currencies;
                     console.log(currencies);
+                    this.currencies = [
+                        {
+                            valor: currencies['valores']['USD'].valor,
+                            data: currencies['valores']['USD'].ultima_consulta,
+                            icon: 'icon-dollar-sign'
+                        }, {
+                            valor: currencies['valores']['BTC'].valor,
+                            data: currencies['valores']['BTC'].ultima_consulta,
+                            icon: 'icon-bitcoin'
+                        }
+                    ];
+                    console.log(this.currencies);
                 },
                 err => console.log(err)
             );
