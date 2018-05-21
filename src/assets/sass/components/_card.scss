@@ -1,5 +1,6 @@
 .card {
     background-color: #FAFAFA;
+    border-left: 4px solid $verde-principal;
     border-radius: 4px;
     box-shadow: 0 0 8px 1px rgba(222, 222, 222, 0.6);
     margin-bottom: 16px;
@@ -73,8 +74,11 @@
 
         .subtitle {
             color: $cinza-claro;
-            font-size: 0.9em;
+            font-size: 0.7em;
             line-height: 1;
+            @media (min-width: $screen-desktop-min) {
+                text-align: left;
+            }
         }
 
     }

@@ -20,10 +20,12 @@ export class CotacaoComponent implements OnInit {
     }
 
     getCurrenciesValue() {
-        this.currencySubscription = this._sharedService.getBTC()
+        this.currencySubscription = this._sharedService.getCurrencies()
             .subscribe(
                 currencies => {
-                    console.log(currencies);
+                    // Subscribe em currencies e popula o objeto currencies.
+                    // A API utilizada retorna um Array e para que seja feita a
+                    // iteração dos valores, é necessário converter em um objeto.
                     this.currencies = [
                         {
                             valor: currencies['valores']['USD'].valor,
@@ -42,6 +44,7 @@ export class CotacaoComponent implements OnInit {
     }
 
     convertDate(unix_timestamp) {
+
         // Cria um novo objeto baseado no timestamp
         // multiplica por 1000 pois o elemento está em milisegundos e não segundos.
         const date = new Date(unix_timestamp * 1000);
