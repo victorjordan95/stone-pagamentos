@@ -5,8 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CotacaoComponent } from './pages/cotacao/cotacao.component';
 
 const routes: Routes = [
-    { path: '', component: AppComponent },
     { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'cotacao', component: CotacaoComponent },
 ];
 

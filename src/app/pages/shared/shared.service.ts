@@ -20,7 +20,9 @@ export class SharedService {
         }).pipe(
             map(event => this.getEventMessage(event)),
             tap(message => this.showProgress(message)),
-            last(), // return last (completed) message to caller
+
+            // Retorna a ultima (completa) mensagem
+            last(),
             catchError(this.handleError())
         );
     }
@@ -29,11 +31,11 @@ export class SharedService {
         switch (event.type) {
             case HttpEventType.Sent:
                 this.isLoading = true;
-                return `Sending request of employees.`;
+                return `Sending request`;
 
             case HttpEventType.DownloadProgress:
                 const percentDone = Math.round(100 * event.loaded / event.total);
-                return `The employee fetch is ${percentDone}% done.`;
+                return `Fetch is ${percentDone}% done.`;
 
             case HttpEventType.ResponseHeader:
                 return `The response returned HTTP code ${event.status}`;
