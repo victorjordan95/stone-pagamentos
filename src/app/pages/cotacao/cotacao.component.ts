@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class CotacaoComponent implements OnInit {
 
     private currencySubscription: Subscription;
-    currencies: any;
+    currencies;
 
     constructor(private _sharedService: SharedService) { }
 
@@ -37,7 +37,6 @@ export class CotacaoComponent implements OnInit {
                             icon: 'icon-bitcoin'
                         }
                     ];
-                    console.log(this.currencies);
                 },
                 err => console.log(err)
             );

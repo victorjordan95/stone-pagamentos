@@ -1,0 +1,22 @@
+.fab-btn {
+    border-radius: 50%;
+    bottom: 70px;
+    box-shadow: 1px 0px 10px 0px #9a9a9a;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    position: fixed;
+    right: 10px;
+    width: 50px;
+    z-index: 5;
+
+    &.primary {
+        background-color: $verde-principal;
+    }
+
+    .icon {
+        fill: #fff;
+        height: 20px;
+        width: 30px;
+    }
+}
