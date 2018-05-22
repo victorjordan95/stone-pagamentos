@@ -4,7 +4,7 @@
     border-radius: 4px;
     box-shadow: 0 0 8px 1px rgba(222, 222, 222, 0.6);
     margin-bottom: 16px;
-    padding: 16px;
+    padding: 16px 0 0;
     @media (min-width: $screen-desktop-min) {
         width: 30%;
     }
@@ -14,12 +14,30 @@
         flex-flow: row wrap;
         justify-content: space-between;
         margin-bottom: 16px;
+        padding: 0 16px;
+    }
+
+    > .card-body {
+        flex-flow: row wrap;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px 16px;
+        width: 100%;
+
+        > .title {
+            color: $verde-principal;
+            font-size: 1.5em;
+            line-height: 1;
+            width: 100%;
+        }
+
     }
 
     .currency {
         align-self: center;
         color: $texto;
         font-size: 1.7em;
+        line-height: 1;
     }
 
     .icon {
@@ -29,30 +47,24 @@
         width: 20px;
     }
 
-    > .card-body {
-
-        > .title {
-            color: $verde-principal;
-            font-size: 1.5em;
-            line-height: 1;
+    .subtitle {
+        color: $cinza-claro;
+        font-size: 0.7em;
+        line-height: 1;
+        @media (min-width: $screen-desktop-min) {
+            text-align: left;
         }
-
-        > .subtitle {
-            color: $cinza-claro;
-            font-size: 0.9em;
-            line-height: 1;
-        }
-
     }
 
 
     &.inline {
         display: flex;
+        flex-flow: row wrap;
         justify-content: space-between;
+        padding: 8px;
         @media (min-width: $screen-desktop-min) {
             flex-flow: column wrap;
             justify-content: space-between;
-
         }
 
         .icon {
@@ -67,15 +79,6 @@
             display: block;
             font-size: 1.1em;
             text-align: right;
-            @media (min-width: $screen-desktop-min) {
-                text-align: left;
-            }
-        }
-
-        .subtitle {
-            color: $cinza-claro;
-            font-size: 0.7em;
-            line-height: 1;
             @media (min-width: $screen-desktop-min) {
                 text-align: left;
             }

@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CotacaoComponent } from './pages/cotacao/cotacao.component';
+import { HistoricoComponent } from './pages/historico/historico.component';
+import { OperacaoComponent } from './pages/operacao/operacao.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +16,8 @@ import { CotacaoComponent } from './pages/cotacao/cotacao.component';
         NavbarComponent,
         HomeComponent,
         CotacaoComponent,
+        HistoricoComponent,
+        OperacaoComponent,
     ],
     imports: [
         BrowserModule,
