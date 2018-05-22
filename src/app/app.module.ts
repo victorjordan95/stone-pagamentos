@@ -1,4 +1,3 @@
-import { CarteiraModalComponent } from './pages/home/carteira-modal/carteira-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
