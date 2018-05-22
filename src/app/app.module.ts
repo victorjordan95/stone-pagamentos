@@ -11,6 +11,7 @@ import { CotacaoComponent } from './pages/cotacao/cotacao.component';
 import { HistoricoComponent } from './pages/historico/historico.component';
 import { OperacaoComponent } from './pages/operacao/operacao.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao-modal.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         CotacaoComponent,
         HistoricoComponent,
         OperacaoComponent,
-        CarteiraModalComponent
+        CarteiraModalComponent,
+        OperacaoModalComponent
     ],
     imports: [
         BrowserModule,
