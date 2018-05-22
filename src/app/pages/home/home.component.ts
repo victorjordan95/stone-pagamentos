@@ -1,15 +1,23 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { CarteiraModalComponent } from './carteira-modal/carteira-modal.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+    @ViewChild(CarteiraModalComponent) modalComponent: CarteiraModalComponent;
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    showModal() {
+        console.log('entrei no primeiro');
+        this.modalComponent.showModal();
+    }
 
 }

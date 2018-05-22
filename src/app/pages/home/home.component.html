@@ -1,3 +1,5 @@
+
+<app-carteira-modal></app-carteira-modal>
 <section class="section container flexrow">
 
     <h1 class="title">
@@ -9,7 +11,7 @@
             <span class="currency">
                 R$
             </span>
-            <svg class="icon icon-plus">
+            <svg class="icon icon-plus" (click)="showModal()">
                 <use xlink:href="#icon-plus"></use>
             </svg>
         </header>
@@ -48,8 +50,4 @@
         </div>
     </div>
 
-
-
-
 </section>
-

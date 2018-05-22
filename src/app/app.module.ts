@@ -1,3 +1,4 @@
+import { CarteiraModalComponent } from './pages/home/carteira-modal/carteira-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CotacaoComponent } from './pages/cotacao/cotacao.component';
 import { HistoricoComponent } from './pages/historico/historico.component';
 import { OperacaoComponent } from './pages/operacao/operacao.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     declarations: [
@@ -18,12 +20,14 @@ import { OperacaoComponent } from './pages/operacao/operacao.component';
         CotacaoComponent,
         HistoricoComponent,
         OperacaoComponent,
+        CarteiraModalComponent
     ],
     imports: [
         BrowserModule,
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
+        ModalModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
