@@ -20,7 +20,6 @@ import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao
         CotacaoComponent,
         HistoricoComponent,
         OperacaoComponent,
-        CarteiraModalComponent,
         OperacaoModalComponent
     ],
     imports: [
