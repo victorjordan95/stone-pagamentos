@@ -31,11 +31,11 @@ export class CotacaoComponent implements OnInit {
                     this.currencies = [
                         {
                             valor: currencies['valores']['USD'].valor,
-                            data: this.convertDate(currencies['valores']['USD'].ultima_consulta),
+                            data: this._sharedService.convertDate(currencies['valores']['USD'].ultima_consulta),
                             icon: 'icon-dollar-sign'
                         }, {
                             valor: currencies['valores']['BTC'].valor,
-                            data: this.convertDate(currencies['valores']['BTC'].ultima_consulta),
+                            data: this._sharedService.convertDate(currencies['valores']['BTC'].ultima_consulta),
                             icon: 'icon-bitcoin'
                         }
                     ];
@@ -43,17 +43,5 @@ export class CotacaoComponent implements OnInit {
                 err => console.log(err)
             );
     }
-
-    convertDate(unix_timestamp) {
-
-        // Cria um novo objeto baseado no timestamp
-        // multiplica por 1000 pois o elemento está em milisegundos e não segundos.
-        const date = new Date(unix_timestamp * 1000);
-
-        // Formatando a data para que o
-        // retorno seja em formato amigável
-        return `${date.getDate()}/${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth()}`}/${date.getUTCFullYear()}`;
-    }
-
 }
 

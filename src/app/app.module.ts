@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
+        FormsModule,
         ModalModule.forRoot()
     ],
     providers: [],

@@ -1,17 +1,47 @@
 <div class="modal fade" bsModal #operationModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+
     <div class="modal-dialog modal-md">
+
         <div class="modal-content">
+
             <div class="modal-header">
-                <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+                <h4 id="dialog-static-name" class="modal-title pull-left">Comprar</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="operationModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-                This is static modal, backdrop click will not close it. Click
-                <b>&times;</b> to close modal.
+
+                <form action="">
+
+                    <div class="form-group">
+
+                        <label>Selecione uma moeda</label>
+                        <select class="form-control" [ngModel]="currencyOption" name="currency" required (change)="onChange($event.target.value)">
+                            <option *ngFor="let currency of currencyOptions" value="{{currency.id}}">
+                                {{currency.currency}}
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="text" [(ngModel)]="quantityOption" name="quantity" #quantity class="form-control" (keyup)="onKey(quantity.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Valor a pagar</label>
+                        <p>{{values | number : '1.2-2'}}</p>
+                    </div>
+
+                </form>
+
             </div>
+
         </div>
     </div>
+
 </div>
 
