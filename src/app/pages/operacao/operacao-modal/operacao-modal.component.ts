@@ -31,6 +31,7 @@ export class OperacaoModalComponent implements OnInit {
         this.getCurrenciesValue();
     }
 
+    // Busca todas as moedas
     getCurrenciesValue() {
         this.currencySubscription = this._sharedService.getCurrencies()
             .subscribe(
@@ -54,18 +55,20 @@ export class OperacaoModalComponent implements OnInit {
             );
     }
 
+    // Função para inicializar o modal
     showModal(): void {
-        this.openModal();
-    }
-
-    openModal() {
         this.operation.show();
     }
 
+    // Função para fechar o modal
     dismissModal() {
         this.operation.hide();
     }
 
+    // Quando o usuário altera o valor do input
+    // a função recebe esse valor e exibe na UI
+    // o valor com o cálculo já realizado, para
+    // dar uma UX melhor.
     onKey(value) {
         console.log(this.currencyOption);
         if (this.currencyOption === 1) {
@@ -77,6 +80,9 @@ export class OperacaoModalComponent implements OnInit {
         }
     }
 
+    // Quando o usuário troca o tipo de moeda
+    // os inputs são atualizados e o valores
+    // resetados para evitar confusões
     onChange(currencyId) {
         this.currencyOption = currencyId;
         this.quantityOption = '';
