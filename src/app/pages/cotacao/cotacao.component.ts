@@ -13,7 +13,7 @@ export class CotacaoComponent implements OnInit {
     private currencySubscription: Subscription;
     currencies;
 
-    constructor(private _sharedService: SharedService) { }
+    constructor(public _sharedService: SharedService) { }
 
     ngOnInit() {
         this.getCurrenciesValue();
