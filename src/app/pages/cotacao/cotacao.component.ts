@@ -16,6 +16,8 @@ export class CotacaoComponent implements OnInit {
     constructor(public _sharedService: SharedService) { }
 
     ngOnInit() {
+        // Inicia o componente e faz o
+        // GET da cotação das moedas
         this.getCurrenciesValue();
     }
 
@@ -48,8 +50,9 @@ export class CotacaoComponent implements OnInit {
         // multiplica por 1000 pois o elemento está em milisegundos e não segundos.
         const date = new Date(unix_timestamp * 1000);
 
-        // O retorno será no formato 04/5/2018
-        return `${date.getDate()}/${date.getMonth() < 10 ? `0${date.getMonth()}` : `${date.getMonth()}`}/${date.getUTCFullYear()}`;
+        // Formatando a data para que o
+        // retorno seja em formato amigável
+        return `${date.getDate()}/${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth()}`}/${date.getUTCFullYear()}`;
     }
 
 }

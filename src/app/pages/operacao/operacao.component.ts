@@ -16,33 +16,20 @@ export class OperacaoComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        // Assim que iniaciliza, adiciona a funcionalidade
+        // do botão flutuante na página para exibir as demais opções
         $(document).ready(function () {
             $('#js-operationBtn').click(function () {
                 $('#js-fabOptions').fadeToggle();
+                $(this).toggleClass('down');
             });
         });
 
     }
 
-
     showModal() {
-        console.log('entrei no primeiro');
         this.modalComponent.showModal();
-    }
-
-    openOptions() {
-        const list = document.getElementById('options');
-    }
-
-    toggle() {
-        this.show = !this.show;
-
-        // CHANGE THE NAME OF THE BUTTON.
-        if (this.show) {
-            this.buttonName = 'Hide';
-        } else {
-            this.buttonName = 'Show';
-        }
+        $('#js-operationBtn').click();
     }
 
 }
