@@ -1,12 +1,35 @@
-<section class="section container">
+<section class="section container flexrow">
 
     <h1 class="title">
         Operações
     </h1>
 
-    <button class="fab-btn primary" (click)="showModal()">
-        <svg class="icon icon-shopping-cart">
-            <use xlink:href="#icon-shopping-cart"></use>
+    <ul id="js-fabOptions" class="fab-options">
+        <li class="option-list">
+            <svg class="icon icon-plus">
+                <use xlink:href="#icon-plus"></use>
+            </svg>
+            <span class="option-text">Comprar</span>
+        </li>
+        <li class="option-list">
+            <svg class="icon icon-minus">
+                <use xlink:href="#icon-minus"></use>
+            </svg>
+            <span class="option-text">Vender</span>
+        </li>
+        <li class="option-list">
+
+            <svg class="icon icon-arrow-repeat-outline">
+                <use xlink:href="#icon-arrow-repeat-outline"></use>
+            </svg>
+            <span class="option-text">Trocar</span>
+        </li>
+    </ul>
+
+    <!-- (click)="showModal()" -->
+    <button class="fab-btn primary" id="js-operationBtn">
+        <svg class="icon icon-more-vertical">
+            <use xlink:href="#icon-more-vertical"></use>
         </svg>
     </button>
 
@@ -41,7 +64,8 @@
             </p>
         </div>
     </div>
-    
+
 </section>
 
 <app-operacao-modal></app-operacao-modal>
+
