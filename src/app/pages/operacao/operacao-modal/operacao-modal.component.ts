@@ -1,6 +1,7 @@
 import { SharedService } from './../../shared/shared.service';
 import { Subscription } from 'rxjs';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 
 @Component({
@@ -17,9 +18,9 @@ export class OperacaoModalComponent implements OnInit {
     values = 0;
     quantityOption = '';
     currencyOptions = [
-        {'id' : 1, 'currency': 'Real'},
-        {'id' : 2, 'currency': 'Dólar'},
-        {'id' : 3, 'currency': 'Bitcoin'},
+        { 'id': 1, 'currency': 'Real' },
+        { 'id': 2, 'currency': 'Dólar' },
+        { 'id': 3, 'currency': 'Bitcoin' },
     ];
     currencyOption = this.currencyOptions[0].id;
 
@@ -70,14 +71,7 @@ export class OperacaoModalComponent implements OnInit {
     // o valor com o cálculo já realizado, para
     // dar uma UX melhor.
     onKey(value) {
-        console.log(this.currencyOption);
-        if (this.currencyOption === 1) {
-            this.values = value;
-        } else if (this.currencyOption === 2) {
-            this.values = value * this.currencies[1].valor;
-        } else {
-            this.values = value * this.currencies[0].valor;
-        }
+        this.values = this.calculateValue(value);
     }
 
     // Quando o usuário troca o tipo de moeda
@@ -87,6 +81,23 @@ export class OperacaoModalComponent implements OnInit {
         this.currencyOption = currencyId;
         this.quantityOption = '';
         this.values = 0;
+    }
+
+    // Recebe os valores do formulário
+    // Faz o cálculo novamente
+    // Desconta o valor total ou acrescenta
+    onSubmit(form: NgForm) {
+        console.log(`Total a pagar: ${this.calculateValue(form.value.quantity)}`);
+    }
+
+    calculateValue(value) {
+        if (this.currencyOption === 1) {
+            return value;
+        } else if (this.currencyOption === 2) {
+            return value * this.currencies[1].valor;
+        } else {
+            return value * this.currencies[0].valor;
+        }
     }
 
 }

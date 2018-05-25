@@ -11,9 +11,10 @@
                 </button>
             </div>
 
-            <div class="modal-body">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-                <form action="">
+                <div class="modal-body">
+
 
                     <div class="form-group">
 
@@ -36,9 +37,12 @@
                         <p>R$ {{values | number : '1.2-2'}}</p>
                     </div>
 
-                </form>
-
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" (click)="operationModal.hide()">Close</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!f.valid">Submit</button>
+                </div>
+            </form>
 
         </div>
     </div>
