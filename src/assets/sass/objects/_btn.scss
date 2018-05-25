@@ -28,6 +28,7 @@
     right: 0;
     .option-list {
         align-content: baseline;
+        cursor: pointer;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;

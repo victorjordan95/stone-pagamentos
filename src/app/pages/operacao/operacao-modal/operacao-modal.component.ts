@@ -14,7 +14,7 @@ export class OperacaoModalComponent implements OnInit {
 
     private currencySubscription: Subscription;
     currencies;
-    values;
+    values = 0;
     quantityOption = '';
     currencyOptions = [
         {'id' : 1, 'currency': 'Real'},
