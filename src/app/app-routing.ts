@@ -1,3 +1,4 @@
+import { LoginComponent } from './pages/login/login.component';
 import { HistoricoComponent } from './pages/historico/historico.component';
 import { OperacaoComponent } from './pages/operacao/operacao.component';
 import { AppComponent } from './app.component';
@@ -7,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CotacaoComponent } from './pages/cotacao/cotacao.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'cotacao', component: CotacaoComponent },
     { path: 'operacao', component: OperacaoComponent },

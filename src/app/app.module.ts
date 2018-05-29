@@ -13,6 +13,10 @@ import { OperacaoComponent } from './pages/operacao/operacao.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao-modal.component';
 
+import { FirebaseConfig } from './../environments/firebase.config';
+import { AngularFireModule } from 'angularfire2/index';
+import { LoginComponent } from './pages/login/login.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -21,7 +25,8 @@ import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao
         CotacaoComponent,
         HistoricoComponent,
         OperacaoComponent,
-        OperacaoModalComponent
+        OperacaoModalComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -29,7 +34,8 @@ import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao
         HttpClientModule,
         AppRoutingModule,
         FormsModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        AngularFireModule.initializeApp(FirebaseConfig)
     ],
     providers: [],
     bootstrap: [AppComponent]

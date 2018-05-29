@@ -3,11 +3,12 @@ import { Subscription } from 'rxjs';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
     selector: 'app-operacao-modal',
     templateUrl: './operacao-modal.component.html',
-    providers: [SharedService],
+    providers: [SharedService, AngularFireDatabase],
     encapsulation: ViewEncapsulation.None
 })
 export class OperacaoModalComponent implements OnInit {
@@ -22,9 +23,9 @@ export class OperacaoModalComponent implements OnInit {
         { 'id': 2, 'currency': 'Dólar' },
         { 'id': 3, 'currency': 'Bitcoin' },
     ];
-    currencyOption = this.currencyOptions[0].id;
+    currencyOption: number = this.currencyOptions[0].id;
 
-    constructor(public _sharedService: SharedService) { }
+    constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase) { }
 
     ngOnInit() {
         // Inicia o componente e faz o
@@ -87,16 +88,29 @@ export class OperacaoModalComponent implements OnInit {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
+        console.log(form);
         console.log(`Total a pagar: ${this.calculateValue(form.value.quantity)}`);
+        this.angularFire.list('historico').push(
+            {
+                currency: form.value.currency,
+                quantity: form.value.quantity,
+                value: this.calculateValue(form.value.quantity)
+            }
+            ).then((t: any) => console.log('dados gravados: ' + t.key)),
+                (e: any) => console.log(e.message);
+        this.currencyOption = this.currencyOptions[0].id;
+        form.controls.quantity.setValue('');
+        this.values = 0;
+        this.dismissModal();
     }
 
     calculateValue(value) {
-        if (this.currencyOption === 1) {
+        if (this.currencyOption == 1) {
             return value;
-        } else if (this.currencyOption === 2) {
-            return value * this.currencies[1].valor;
-        } else {
+        } else if (this.currencyOption == 2) {
             return value * this.currencies[0].valor;
+        } else {
+            return value * this.currencies[1].valor;
         }
     }
 
