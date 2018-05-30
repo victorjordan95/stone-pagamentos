@@ -1,3 +1,11 @@
-<p>
-  login-form works!
-</p>
+<button (click)="form_logout()" type="button">Deslogar</button>
+<h1>
+    Login</h1>
+
+<form action="">
+    <input type="text" required ngModel name="email" placeholder="email">
+    <br>
+    <input type="password" required ngModel name="senha" placeholder="Senha">
+    <br>
+    <button type="submit">Logar</button>
+</form>
