@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { SharedService } from './../../shared/shared.service';
 import { Subscription } from 'rxjs';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -8,13 +9,14 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
     selector: 'app-operacao-modal',
     templateUrl: './operacao-modal.component.html',
-    providers: [SharedService, AngularFireDatabase],
+    providers: [SharedService, AngularFireDatabase, AngularFireAuth],
     encapsulation: ViewEncapsulation.None
 })
 export class OperacaoModalComponent implements OnInit {
     @ViewChild('operationModal') operation: ModalDirective;
 
     private currencySubscription: Subscription;
+    public userId;
     currencies;
     values = 0;
     quantityOption = '';
@@ -25,7 +27,15 @@ export class OperacaoModalComponent implements OnInit {
     ];
     currencyOption: number = this.currencyOptions[0].id;
 
-    constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase) { }
+    constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
+        private afAuth: AngularFireAuth) {
+        this.afAuth.authState.subscribe(user => {
+            if (user) {
+                this.userId = user.uid;
+                console.log(this.userId);
+            }
+        });
+    }
 
     ngOnInit() {
         // Inicia o componente e faz o
@@ -90,14 +100,15 @@ export class OperacaoModalComponent implements OnInit {
     onSubmit(form: NgForm) {
         console.log(form);
         console.log(`Total a pagar: ${this.calculateValue(form.value.quantity)}`);
-        this.angularFire.list('historico').push(
+        this.angularFire.list(`${this.userId}/historico`).push(
             {
                 currency: form.value.currency,
                 quantity: form.value.quantity,
                 value: this.calculateValue(form.value.quantity)
             }
-            ).then((t: any) => console.log('dados gravados: ' + t.key)),
-                (e: any) => console.log(e.message);
+        ).then((t: any) => console.log('dados gravados: ' + t.key)),
+            (e: any) => console.log(e.message);
+
         this.currencyOption = this.currencyOptions[0].id;
         form.controls.quantity.setValue('');
         this.values = 0;

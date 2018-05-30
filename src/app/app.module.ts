@@ -1,3 +1,4 @@
+import { LoginFormComponent } from './pages/login/login-form/login-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +27,8 @@ import { LoginComponent } from './pages/login/login.component';
         HistoricoComponent,
         OperacaoComponent,
         OperacaoModalComponent,
-        LoginComponent
+        LoginComponent,
+        LoginFormComponent
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,3 @@
-<!-- <button (click)="form_logout()" type="button">Deslogar</button> -->
 <section class="login">
     <svg class="icon icon-banknote">
         <use xlink:href="#icon-banknote"></use>
@@ -8,14 +7,15 @@
 
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="login-form">
         <label>E-mail</label>
-        <input type="text" class="input-group" required ngModel name="email" placeholder="Exemplo: thanos@dust.com">
+        <input type="text" class="input-group" required autofocus autocomplete="email" ngModel name="email" placeholder="Exemplo: thanos@dust.com">
         
         <label>Senha</label>
-        <input type="password" class="input-group" required ngModel name="senha" placeholder="Exemplo: *******">
+        <input type="password" class="input-group" name="senha" placeholder="Exemplo: *******" required ngModel autocomplete="current-password">
         
-        <button type="submit" class="btn btn-success">Logar</button>
+        <button type="submit" class="btn btn-success" [disabled]="f.form.invalid">Acessar</button>
+
     </form>
 
-    <a href="" class="register">Não tenho conta ainda</a>
+    <a routerLink="/cadastro" class="register">Não tenho conta ainda</a>
 </section>
 

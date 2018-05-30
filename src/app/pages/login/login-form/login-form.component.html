@@ -1,11 +1,17 @@
-<button (click)="form_logout()" type="button">Deslogar</button>
-<h1>
-    Login</h1>
+<section class="login">
 
-<form action="">
-    <input type="text" required ngModel name="email" placeholder="email">
-    <br>
-    <input type="password" required ngModel name="senha" placeholder="Senha">
-    <br>
-    <button type="submit">Logar</button>
-</form>
+    <h1 class="title">Crie sua carteira!</h1>
+    <h2 class="subtitle">E comece hoje a investir!</h2>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="login-form">
+        <label>E-mail</label>
+        <input type="text" class="input-group" required autofocus autocomplete="email" ngModel name="email" placeholder="Exemplo: thanos@dust.com">
+
+        <label>Senha</label>
+        <input type="password" class="input-group" name="senha" placeholder="Exemplo: *******" required ngModel autocomplete="current-password">
+
+        <button type="submit" class="btn btn-success" [disabled]="f.form.invalid">Acessar</button>
+
+    </form>
+
+</section>
