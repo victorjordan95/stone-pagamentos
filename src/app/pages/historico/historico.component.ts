@@ -26,9 +26,12 @@ export class HistoricoComponent implements OnInit {
                 this.userId = user.uid;
                 console.log(this.userId);
             }
+            // Pega os valores de historico e adiciona em
+            // um Array de trás para frente. Desta forma os
+            // dados ficam organizados de forma cronológica.
             angularFire.list(`${this.userId}/historico`).valueChanges().subscribe(
                 items => {
-                    this.items = items;
+                    this.items = items.reverse();
                     this.isLoaded = true;
                     console.log(this.items);
                 }
