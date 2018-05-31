@@ -1,44 +1,21 @@
-<section class="section container flexrow">
+<section class="section container flexrow" *ngIf="isLoaded">
 
     <h1 class="title">
         Carteira
     </h1>
 
-    <div class="card inline">
-        R$
+    <div class="card inline" *ngFor="let currency of currencies">
+        
+        <span class="currency-name">{{currency.currencyName}}</span>
         <div class="currency-info">
-            <span class="card-mountant"> 100.000,00 </span>
+            <span class="card-mountant"> {{currency.currentlyValue | number : '1.2-2'}} </span>
             <p class="subtitle">
-                20/05/2018 - 11:20
+                {{today | date:'dd/MM/yyyy HH:mm'}}
             </p>
         </div>
 
     </div>
 
-    <div class="card inline">
-        <svg class="icon icon-bitcoin">
-            <use xlink:href="#icon-bitcoin"></use>
-        </svg>
-        <div class="currency-info">
-            <span class="card-mountant"> 0 </span>
-            <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-
-    </div>
-
-    <div class="card inline">
-        <svg class="icon icon-dollar-sign">
-            <use xlink:href="#icon-dollar-sign"></use>
-        </svg>
-        <div class="currency-info">
-            <span class="card-mountant"> 0 </span>
-            <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-    </div>
 
 </section>
 <app-navbar></app-navbar>

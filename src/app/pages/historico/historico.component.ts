@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Component({
     selector: 'app-historico',
     templateUrl: './historico.component.html',
-    providers: [AngularFireDatabase, AngularFireAuth, AngularFirestore]
+    providers: [AngularFireDatabase, AngularFireAuth]
 })
 export class HistoricoComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class HistoricoComponent implements OnInit {
     historicoRef: AngularFireList<any[]>;
     historico: Observable<any[]>;
 
-    constructor(private angularFire: AngularFireDatabase, private afAuth: AngularFireAuth, db: AngularFirestore) {
+    constructor(private angularFire: AngularFireDatabase, private afAuth: AngularFireAuth ) {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.userId = user.uid;

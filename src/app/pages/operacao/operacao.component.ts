@@ -22,6 +22,7 @@ export class OperacaoComponent implements OnInit {
     }
 
     showOptions() {
+        $('#js-fabButton').toggleClass('down');
         $('#js-fabOptions').fadeToggle();
     }
 

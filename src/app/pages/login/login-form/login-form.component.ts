@@ -24,14 +24,21 @@ export class LoginFormComponent implements OnInit {
             f.controls.email.value,
             f.controls.senha.value
         ).then(ok => {
-
+            const currencies = [
+                {currencyName: 'Real', currentlyValue: 100000},
+                {currencyName: 'Dólar', currentlyValue: 0},
+                {currencyName: 'Bitcoin', currentlyValue: 0}
+            ];
             // Adiciona na "árvore" do novo usuário
-            // o valor de 100.000 reais.
-            this.angularFire.list(`${ok.user.uid}/moedas/real`).push(
-                {
-                    currencyName: 'Real',
-                    currentlyValue: 100000
-                }
+            // o valor de 100.000 reais e as demais moedas
+            this.angularFire.list(`${ok.user.uid}/moedas`).push(
+                {currencyName: 'Real', currentlyValue: 100000}
+            ),
+            this.angularFire.list(`${ok.user.uid}/moedas`).push(
+                {currencyName: 'Dólar', currentlyValue: 0}
+            ),
+            this.angularFire.list(`${ok.user.uid}/moedas`).push(
+                {currencyName: 'Bitcoin', currentlyValue: 0}
             ).then((t: any) => {
                 // Se tudo estiver certo, o usuário
                 // será enviado para a tela de login
