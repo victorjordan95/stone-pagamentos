@@ -1,4 +1,16 @@
-<p>
-  historico works!
-</p>
+<section class="section container flexrow" *ngIf="isLoaded">
+
+    <h1 class="title">
+        Cotação
+    </h1>
+
+    <div class="card inline" *ngFor="let dado of items">
+        <div class="currency-info">
+            <span class="card-mountant"> {{dado.value | number : '1.2-2'}} </span>
+        </div>
+
+    </div>
+</section>
+
 <app-navbar></app-navbar>
+

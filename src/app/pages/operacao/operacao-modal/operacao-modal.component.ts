@@ -17,6 +17,8 @@ export class OperacaoModalComponent implements OnInit {
 
     private currencySubscription: Subscription;
     public userId;
+    data;
+    final_data;
     currencies;
     values = 0;
     quantityOption = '';
@@ -33,6 +35,8 @@ export class OperacaoModalComponent implements OnInit {
             if (user) {
                 this.userId = user.uid;
                 console.log(this.userId);
+                this.data = this.angularFire.list('/posts');
+                console.log(this.data);
             }
         });
     }
@@ -98,16 +102,15 @@ export class OperacaoModalComponent implements OnInit {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
-        console.log(form);
-        console.log(`Total a pagar: ${this.calculateValue(form.value.quantity)}`);
         this.angularFire.list(`${this.userId}/historico`).push(
             {
-                currency: form.value.currency,
+                createDate: `${Date.parse(new Date().toString())}`,
+                currencyId: form.value.currency,
+                currencyName: this.currencyOptions[form.value.currency - 1].currency,
                 quantity: form.value.quantity,
                 value: this.calculateValue(form.value.quantity)
             }
         ).then((t: any) => console.log('dados gravados: ' + t.key)),
-            (e: any) => console.log(e.message);
 
         this.currencyOption = this.currencyOptions[0].id;
         form.controls.quantity.setValue('');
@@ -115,6 +118,8 @@ export class OperacaoModalComponent implements OnInit {
         this.dismissModal();
     }
 
+    // Calcula o valor de acordo com a
+    // moeda selecionada e retornao total
     calculateValue(value) {
         if (this.currencyOption == 1) {
             return value;

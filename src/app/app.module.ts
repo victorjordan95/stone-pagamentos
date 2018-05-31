@@ -17,6 +17,9 @@ import { OperacaoModalComponent } from './pages/operacao/operacao-modal/operacao
 import { FirebaseConfig } from './../environments/firebase.config';
 import { AngularFireModule } from 'angularfire2/index';
 import { LoginComponent } from './pages/login/login.component';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
     declarations: [
@@ -37,7 +40,10 @@ import { LoginComponent } from './pages/login/login.component';
         AppRoutingModule,
         FormsModule,
         ModalModule.forRoot(),
-        AngularFireModule.initializeApp(FirebaseConfig)
+        AngularFireModule.initializeApp(FirebaseConfig),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AngularFireDatabaseModule
     ],
     providers: [],
     bootstrap: [AppComponent]
