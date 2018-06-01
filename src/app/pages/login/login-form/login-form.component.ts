@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
+    public password = '';
     constructor(private afAuth: AngularFireAuth, private router: Router, private angularFire: AngularFireDatabase) { }
 
     ngOnInit() {
