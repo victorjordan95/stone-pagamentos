@@ -5,7 +5,7 @@
 
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="login-form">
         <label>E-mail</label>
-        <input type="text" class="input-group" required autofocus autocomplete="email" ngModel name="email" placeholder="Exemplo: thanos@dust.com">
+        <input type="email" class="input-group" required autofocus autocomplete="email" ngModel name="email" placeholder="Exemplo: thanos@dust.com">
 
         <label>Senha</label>
         <input type="password" class="input-group" name="senha" placeholder="Exemplo: *******" required ngModel autocomplete="current-password">
