@@ -1,0 +1,82 @@
+<section class="section container flexrow">
+
+    <h1 class="title">
+        Operações
+    </h1>
+
+    <ul id="js-fabOptions" class="fab-options">
+        <li class="option-list" (click)="showModal()">
+            <svg class="icon icon-plus">
+                <use xlink:href="#icon-plus"></use>
+            </svg>
+            <span class="option-text">Comprar</span>
+        </li>
+        <li class="option-list">
+            <svg class="icon icon-minus">
+                <use xlink:href="#icon-minus"></use>
+            </svg>
+            <span class="option-text">Vender</span>
+        </li>
+        <li class="option-list">
+
+            <svg class="icon icon-arrow-repeat-outline">
+                <use xlink:href="#icon-arrow-repeat-outline"></use>
+            </svg>
+            <span class="option-text">Trocar</span>
+        </li>
+    </ul>
+
+    <button id="js-fabButton" class="fab-btn primary rotate" (click)="showOptions()">
+        +
+    </button>
+
+    <div class="card">
+        <header class="card-header">
+            R$
+        </header>
+        <div class="card-body">
+            <p class="title">
+                100.000,00
+            </p>
+            <p class="subtitle">
+                20/05/2018 - 11:20
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <header class="card-header">
+            <svg class="icon icon-dollar-sign">
+                <use xlink:href="#icon-dollar-sign"></use>
+            </svg>
+        </header>
+        <div class="card-body">
+            <p class="title">
+                100.000,00
+            </p>
+            <p class="subtitle">
+                20/05/2018 - 11:20
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <header class="card-header">
+            <svg class="icon icon-bitcoin">
+                <use xlink:href="#icon-bitcoin"></use>
+            </svg>
+        </header>
+        <div class="card-body">
+            <p class="title">
+                100.000,00
+            </p>
+            <p class="subtitle">
+                20/05/2018 - 11:20
+            </p>
+        </div>
+    </div>
+
+</section>
+<app-navbar></app-navbar>
+<app-operacao-modal></app-operacao-modal>
+

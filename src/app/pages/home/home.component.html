@@ -1,3 +1,22 @@
-<section class="container">
-    Home Works
+<section class="section container flexrow" *ngIf="isLoaded">
+
+    <h1 class="title">
+        Carteira
+    </h1>
+
+    <div class="card inline" *ngFor="let currency of currencies">
+        
+        <span class="currency-name">{{currency.currencyName}}</span>
+        <div class="currency-info">
+            <span class="card-mountant"> {{currency.currentlyValue | number : '1.2-2'}} </span>
+            <p class="subtitle">
+                {{today | date:'dd/MM/yyyy HH:mm'}}
+            </p>
+        </div>
+
+    </div>
+
+
 </section>
+<app-navbar></app-navbar>
+

@@ -1,0 +1,21 @@
+<section class="login">
+    <svg class="icon icon-banknote">
+        <use xlink:href="#icon-banknote"></use>
+    </svg>
+    <h1 class="title">Compre | Venda | Guarde</h1>
+    <h2 class="subtitle">Aqui seu dinheiro está sob controle</h2>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="login-form">
+        <label>E-mail</label>
+        <input type="email" class="input-group" required autofocus autocomplete="email" ngModel name="email" placeholder="Exemplo: thanos@dust.com">
+        
+        <label>Senha</label>
+        <input type="password" class="input-group" name="senha" placeholder="Exemplo: *******" required ngModel autocomplete="current-password">
+        
+        <button type="submit" class="btn btn-success" [disabled]="f.form.invalid">Acessar</button>
+
+    </form>
+
+    <a routerLink="/cadastro" class="register">Não tenho conta ainda</a>
+</section>
+

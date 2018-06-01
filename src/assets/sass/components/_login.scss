@@ -1,0 +1,51 @@
+.login {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 16px;
+    .icon {
+        display: block;
+        height: 100px;
+        width: 100px;
+        margin: 16px auto;
+        fill: $verde-principal;
+    }
+    .title {
+        font-size: 1.3em;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .subtitle {
+        font-size: 1em;
+        margin: 8px 0 16px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .login-label {
+        margin: 16px 0 0;
+    }
+
+    .btn {
+        height: 40px;
+        margin-top: 36px;
+        width: 100%;
+    }
+
+    .register {
+        color: #2196F3;
+        margin: 32px 0;
+        text-decoration: underline;
+        text-align: center;
+    }
+}
+

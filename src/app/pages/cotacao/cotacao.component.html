@@ -1,0 +1,23 @@
+<section class="section container flexrow" *ngIf="!_sharedService.isLoading">
+
+    <h1 class="title">
+        Cotação
+    </h1>
+
+    <div class="card inline" *ngFor="let item of currencies">
+        <svg attr.class="icon {{item.icon}}">
+            <use attr.xlink:href="#{{item.icon}}"></use>
+        </svg>
+        <div class="currency-info">
+            <span class="card-mountant"> {{item.valor | number : '1.2-2'}} </span>
+            <p class="subtitle">
+                Atualizado em {{item.data}}
+            </p>
+        </div>
+
+    </div>
+
+
+</section>
+<app-navbar></app-navbar>
+

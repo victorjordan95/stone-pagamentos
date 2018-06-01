@@ -1,34 +1,36 @@
 <nav class="menu">
-    <a routerLink="/perfil" routerLinkActive="active" class="menu-link">
-        <svg class="icon icon-user">
-            <use xlink:href="#icon-user"></use>
-        </svg>
-        <span class="menu-label">Perfil</span>
-    </a>
+
     <a routerLink="/home" routerLinkActive="active" class="menu-link">
         <svg class="icon icon-wallet">
             <use xlink:href="#icon-wallet"></use>
         </svg>
         <span class="menu-label">Carteira</span>
     </a>
-    <a routerLink="/pagamento" routerLinkActive="active" class="menu-link transactions">
-        <svg class="icon icon-banknote">
-            <use xlink:href="#icon-banknote"></use>
-        </svg>
-        <span class="menu-label">Pagamento</span>
-    </a>
-    <a routerLink="/variacao" routerLinkActive="active" class="menu-link">
-        <svg class="icon icon-line-graph">
-            <use xlink:href="#icon-line-graph"></use>
-        </svg>
-        <span class="menu-label">Variação</span>
-    </a>
-    <a routerLink="/configuracao" routerLinkActive="active" class="menu-link">
+    <a routerLink="/historico" routerLinkActive="active" class="menu-link">
         <svg class="icon icon-history">
             <use xlink:href="#icon-history"></use>
         </svg>
         <span class="menu-label">Histórico</span>
     </a>
+    <a routerLink="/operacao" routerLinkActive="active" class="menu-link transactions">
+        <svg class="icon icon-banknote">
+            <use xlink:href="#icon-banknote"></use>
+        </svg>
+        <span class="menu-label">Operação</span>
+    </a>
+    <a routerLink="/cotacao" routerLinkActive="active" class="menu-link">
+        <svg class="icon icon-line-graph">
+            <use xlink:href="#icon-line-graph"></use>
+        </svg>
+        <span class="menu-label">Cotação</span>
+    </a>
 
+    <a (click)="form_logout()" class="menu-link">
+        <svg class="icon icon-log-out">
+            <use xlink:href="#icon-log-out"></use>
+        </svg>
+        <span class="menu-label">Sair</span>
+    </a>
+    
 </nav>
 
