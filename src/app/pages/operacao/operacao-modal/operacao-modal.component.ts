@@ -17,16 +17,17 @@ export class OperacaoModalComponent implements OnInit {
 
     private currencySubscription: Subscription;
     public userId;
-    data;
-    final_data;
-    currencies;
-    values = 0;
-    quantityOption = '';
-    currencyOptions = [
+    public operationTitle;
+    public data;
+    public final_data;
+    public currencies;
+    public values = 0;
+    public quantityOption = '';
+    public currencyOptions = [
         { 'id': 1, 'currency': 'Real' },
         { 'id': 2, 'currency': 'Dólar' },
         { 'id': 3, 'currency': 'Bitcoin' },
-    ];
+    ];;
     currencyOption: number = this.currencyOptions[0].id;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
@@ -69,7 +70,21 @@ export class OperacaoModalComponent implements OnInit {
     }
 
     // Função para inicializar o modal
-    showModal(): void {
+    showModal(type): void {
+        if (type === 'compra') {
+            this.operationTitle = 'Comprar';
+            this.currencyOptions = [
+                { 'id': 1, 'currency': 'Real' },
+                { 'id': 2, 'currency': 'Dólar' },
+                { 'id': 3, 'currency': 'Bitcoin' },
+            ];
+        } else {
+            this.operationTitle = 'Vender';
+            this.currencyOptions = [
+                { 'id': 2, 'currency': 'Dólar' },
+                { 'id': 3, 'currency': 'Bitcoin' },
+            ];
+        }
         this.operation.show();
     }
 
@@ -99,6 +114,8 @@ export class OperacaoModalComponent implements OnInit {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
+        const messageListRef = this.angularFire.database.ref(`${this.userId}/moedas/0`);
+        debugger;
         this.angularFire.list(`${this.userId}/historico`).push(
             {
                 createDate: `${Date.parse(new Date().toString())}`,
@@ -108,6 +125,8 @@ export class OperacaoModalComponent implements OnInit {
                 value: this.calculateValue(form.value.quantity)
             }
         ).then((t: any) => console.log('dados gravados: ' + t.key)),
+
+        this.angularFire.object(`${this.userId}/moedas/0`).update({currencyName: 'Real', currentlyValue: form.value.quantity});
 
         this.currencyOption = this.currencyOptions[0].id;
         form.controls.quantity.setValue('');

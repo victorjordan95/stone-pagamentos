@@ -16,8 +16,9 @@ export class OperacaoComponent implements OnInit {
 
     }
 
-    showModal() {
-        this.modalComponent.showModal();
+    showModal(type) {
+        debugger;
+        this.modalComponent.showModal(type);
         this.showOptions();
     }
 

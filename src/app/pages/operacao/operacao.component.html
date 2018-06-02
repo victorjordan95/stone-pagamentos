@@ -5,13 +5,13 @@
     </h1>
 
     <ul id="js-fabOptions" class="fab-options">
-        <li class="option-list" (click)="showModal()">
+        <li class="option-list" (click)="showModal('compra')">
             <svg class="icon icon-plus">
                 <use xlink:href="#icon-plus"></use>
             </svg>
             <span class="option-text">Comprar</span>
         </li>
-        <li class="option-list">
+        <li class="option-list" (click)="showModal('venda')">
             <svg class="icon icon-minus">
                 <use xlink:href="#icon-minus"></use>
             </svg>
@@ -27,7 +27,9 @@
     </ul>
 
     <button id="js-fabButton" class="fab-btn primary rotate" (click)="showOptions()">
-        +
+        <svg class="icon icon-plus">
+            <use xlink:href="#icon-plus"></use>
+        </svg>
     </button>
 
     <div class="card">
