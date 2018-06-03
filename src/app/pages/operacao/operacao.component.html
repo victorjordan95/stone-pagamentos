@@ -32,48 +32,19 @@
         </svg>
     </button>
 
-    <div class="card">
+    <div class="card" *ngFor="let currency of currencies">
         <header class="card-header">
-            R$
-        </header>
-        <div class="card-body">
-            <p class="title">
-                100.000,00
-            </p>
-            <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-    </div>
-
-    <div class="card">
-        <header class="card-header">
-            <svg class="icon icon-dollar-sign">
-                <use xlink:href="#icon-dollar-sign"></use>
+            {{currency.currencyName}}
+            <svg class="icon icon-plus">
+                <use xlink:href="#icon-plus"></use>
             </svg>
         </header>
         <div class="card-body">
             <p class="title">
-                100.000,00
+                {{currency.currentlyValue | number : '1.2-2'}}
             </p>
             <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-    </div>
-
-    <div class="card">
-        <header class="card-header">
-            <svg class="icon icon-bitcoin">
-                <use xlink:href="#icon-bitcoin"></use>
-            </svg>
-        </header>
-        <div class="card-body">
-            <p class="title">
-                100.000,00
-            </p>
-            <p class="subtitle">
-                20/05/2018 - 11:20
+                {{today | date:'dd/MM/yyyy HH:mm'}}
             </p>
         </div>
     </div>

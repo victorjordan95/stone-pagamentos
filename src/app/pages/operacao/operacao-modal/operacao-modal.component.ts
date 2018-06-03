@@ -23,12 +23,8 @@ export class OperacaoModalComponent implements OnInit {
     public currencies;
     public values = 0;
     public quantityOption = '';
-    public currencyOptions = [
-        { 'id': 1, 'currency': 'Real' },
-        { 'id': 2, 'currency': 'Dólar' },
-        { 'id': 3, 'currency': 'Bitcoin' },
-    ];;
-    currencyOption: number = this.currencyOptions[0].id;
+    public currencyOptions;
+    public currencyOption;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
         private afAuth: AngularFireAuth) {
@@ -74,17 +70,18 @@ export class OperacaoModalComponent implements OnInit {
         if (type === 'compra') {
             this.operationTitle = 'Comprar';
             this.currencyOptions = [
-                { 'id': 1, 'currency': 'Real' },
-                { 'id': 2, 'currency': 'Dólar' },
-                { 'id': 3, 'currency': 'Bitcoin' },
+                { 'id': 0, 'currency': 'Real' },
+                { 'id': 1, 'currency': 'Dólar' },
+                { 'id': 2, 'currency': 'Bitcoin' },
             ];
         } else {
             this.operationTitle = 'Vender';
             this.currencyOptions = [
-                { 'id': 2, 'currency': 'Dólar' },
-                { 'id': 3, 'currency': 'Bitcoin' },
+                { 'id': 1, 'currency': 'Dólar' },
+                { 'id': 2, 'currency': 'Bitcoin' },
             ];
         }
+        this.currencyOption = this.currencyOptions[0].id;
         this.operation.show();
     }
 
@@ -120,13 +117,18 @@ export class OperacaoModalComponent implements OnInit {
             {
                 createDate: `${Date.parse(new Date().toString())}`,
                 currencyId: form.value.currency,
-                currencyName: this.currencyOptions[form.value.currency - 1].currency,
+                currencyName: this.currencyOptions[form.value.currency].currency,
                 quantity: form.value.quantity,
                 value: this.calculateValue(form.value.quantity)
             }
         ).then((t: any) => console.log('dados gravados: ' + t.key)),
 
-        this.angularFire.object(`${this.userId}/moedas/0`).update({currencyName: 'Real', currentlyValue: form.value.quantity});
+        this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
+            {
+                currencyName: this.currencyOptions[form.value.currency].currency,
+                currentlyValue: form.value.quantity
+            }
+        );
 
         this.currencyOption = this.currencyOptions[0].id;
         form.controls.quantity.setValue('');
@@ -137,9 +139,9 @@ export class OperacaoModalComponent implements OnInit {
     // Calcula o valor de acordo com a
     // moeda selecionada e retornao total
     calculateValue(value) {
-        if (this.currencyOption == 1) {
+        if (this.currencyOption == 0) {
             return value;
-        } else if (this.currencyOption == 2) {
+        } else if (this.currencyOption == 1) {
             return value * this.currencies[0].valor;
         } else {
             return value * this.currencies[1].valor;
