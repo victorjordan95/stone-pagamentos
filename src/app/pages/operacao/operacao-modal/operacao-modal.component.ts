@@ -25,6 +25,7 @@ export class OperacaoModalComponent implements OnInit {
     public quantityOption = '';
     public currencyOptions;
     public currencyOption;
+    public userCurrencies;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
         private afAuth: AngularFireAuth) {
@@ -32,6 +33,12 @@ export class OperacaoModalComponent implements OnInit {
             if (user) {
                 this.userId = user.uid;
             }
+            this.angularFire.list(`${this.userId}/moedas`).valueChanges().subscribe(
+                currencies => {
+                    this.userCurrencies = currencies;
+                    console.log(currencies);
+                }
+            );
         });
     }
 
@@ -111,8 +118,34 @@ export class OperacaoModalComponent implements OnInit {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
-        const messageListRef = this.angularFire.database.ref(`${this.userId}/moedas/0`);
-        debugger;
+        debugger
+
+        // Atualiza o historico
+        this.updateHistoric(form);
+
+        this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
+            {
+                currencyName: this.currencyOptions[form.value.currency].currency,
+                currentlyValue: parseFloat(form.value.quantity) + parseFloat(this.userCurrencies[form.value.currency].currentlyValue)
+            }
+        );
+
+        // Remove da moeda escolhida como pagamento
+        // o montante que foi calculado
+        this.angularFire.object(`${this.userId}/moedas/${form.value.paymentOption}`).update(
+            {
+                currencyName: this.currencyOptions[form.value.paymentOption].currency,
+                currentlyValue: parseFloat(this.userCurrencies[form.value.paymentOption].currentlyValue) -
+                                parseFloat(this.calculateValue(form.value.quantity))
+            }
+        );
+
+        form.controls.quantity.setValue('');
+        this.values = 0;
+        this.dismissModal();
+    }
+
+    updateHistoric(form) {
         this.angularFire.list(`${this.userId}/historico`).push(
             {
                 createDate: `${Date.parse(new Date().toString())}`,
@@ -121,19 +154,7 @@ export class OperacaoModalComponent implements OnInit {
                 quantity: form.value.quantity,
                 value: this.calculateValue(form.value.quantity)
             }
-        ).then((t: any) => console.log('dados gravados: ' + t.key)),
-
-        this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
-            {
-                currencyName: this.currencyOptions[form.value.currency].currency,
-                currentlyValue: form.value.quantity
-            }
-        );
-
-        this.currencyOption = this.currencyOptions[0].id;
-        form.controls.quantity.setValue('');
-        this.values = 0;
-        this.dismissModal();
+        ).then((t: any) => console.log('dados gravados: ' + t.key));
     }
 
     // Calcula o valor de acordo com a
