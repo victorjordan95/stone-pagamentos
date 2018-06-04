@@ -17,7 +17,7 @@ export class OperacaoModalComponent implements OnInit {
 
     private currencySubscription: Subscription;
     public userId;
-    public operationTitle;
+    public isBuying;
     public data;
     public final_data;
     public currencies;
@@ -26,6 +26,7 @@ export class OperacaoModalComponent implements OnInit {
     public currencyOptions;
     public currencyOption;
     public userCurrencies;
+    public paymentOption;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
         private afAuth: AngularFireAuth) {
@@ -42,9 +43,9 @@ export class OperacaoModalComponent implements OnInit {
         });
     }
 
+    // Inicia o componente e faz o
+    // GET da cotação das moedas
     ngOnInit() {
-        // Inicia o componente e faz o
-        // GET da cotação das moedas
         this.getCurrenciesValue();
     }
 
@@ -75,14 +76,14 @@ export class OperacaoModalComponent implements OnInit {
     // Função para inicializar o modal
     showModal(type): void {
         if (type === 'compra') {
-            this.operationTitle = 'Comprar';
+            this.isBuying = true;
             this.currencyOptions = [
                 { 'id': 0, 'currency': 'Real' },
                 { 'id': 1, 'currency': 'Dólar' },
                 { 'id': 2, 'currency': 'Bitcoin' },
             ];
         } else {
-            this.operationTitle = 'Vender';
+            this.isBuying = false;
             this.currencyOptions = [
                 { 'id': 1, 'currency': 'Dólar' },
                 { 'id': 2, 'currency': 'Bitcoin' },
@@ -102,7 +103,7 @@ export class OperacaoModalComponent implements OnInit {
     // o valor com o cálculo já realizado, para
     // dar uma UX melhor.
     onKey(value) {
-        this.values = this.calculateValue(value);
+        this.values = this._calculateValue(value);
     }
 
     // Quando o usuário troca o tipo de moeda
@@ -121,45 +122,65 @@ export class OperacaoModalComponent implements OnInit {
         debugger
 
         // Atualiza o historico
-        this.updateHistoric(form);
+        this._updateHistoric(form);
 
-        this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
-            {
-                currencyName: this.currencyOptions[form.value.currency].currency,
-                currentlyValue: parseFloat(form.value.quantity) + parseFloat(this.userCurrencies[form.value.currency].currentlyValue)
-            }
-        );
-
-        // Remove da moeda escolhida como pagamento
-        // o montante que foi calculado
-        this.angularFire.object(`${this.userId}/moedas/${form.value.paymentOption}`).update(
-            {
-                currencyName: this.currencyOptions[form.value.paymentOption].currency,
-                currentlyValue: parseFloat(this.userCurrencies[form.value.paymentOption].currentlyValue) -
-                                parseFloat(this.calculateValue(form.value.quantity))
-            }
-        );
+        // Caso seja real, o ato de comprar
+        // deve apenas somar ao montante total
+        if (form.value.currency == 0) {
+            // Adiciona a quantidade de Real ao
+            // montante do usuário
+            this._addCurrency(form);
+        } else {
+            // Adiciona a quantidade da moeda
+            // escolhida e remove do real a quantidade
+            // que será gasta para realizar a operação
+            this._addCurrency(form);
+            this._removeCurrency(form);
+        }
 
         form.controls.quantity.setValue('');
         this.values = 0;
         this.dismissModal();
     }
 
-    updateHistoric(form) {
+    _updateHistoric(form) {
         this.angularFire.list(`${this.userId}/historico`).push(
             {
                 createDate: `${Date.parse(new Date().toString())}`,
                 currencyId: form.value.currency,
                 currencyName: this.currencyOptions[form.value.currency].currency,
                 quantity: form.value.quantity,
-                value: this.calculateValue(form.value.quantity)
+                value: this._calculateValue(form.value.quantity)
             }
         ).then((t: any) => console.log('dados gravados: ' + t.key));
     }
 
+    // Recebe os valores do form para
+    // atualizar a árvore selecionada
+    _addCurrency(form) {
+        this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
+            {
+                currencyName: this.currencyOptions[form.value.currency].currency,
+                currentlyValue: parseFloat(form.value.quantity) + parseFloat(this.userCurrencies[form.value.currency].currentlyValue)
+            }
+        );
+    }
+
+    _removeCurrency(form) {
+        // Remove da moeda escolhida como pagamento
+        // o montante que foi calculado
+        this.angularFire.object(`${this.userId}/moedas/0`).update(
+            {
+                currencyName: this.currencyOptions[0].currency,
+                currentlyValue: parseFloat(this.userCurrencies[0].currentlyValue) -
+                    parseFloat(this._calculateValue(form.value.quantity))
+            }
+        );
+    }
+
     // Calcula o valor de acordo com a
     // moeda selecionada e retornao total
-    calculateValue(value) {
+    _calculateValue(value) {
         if (this.currencyOption == 0) {
             return value;
         } else if (this.currencyOption == 1) {

@@ -10,8 +10,10 @@ main {
 }
 
 .container {
-    padding: 16px 16px 0;
+    margin-bottom: 48px;
+    padding: 16px 16px;
     @media (min-width: $screen-desktop-min) {
+        margin-bottom: 0;
         padding: 32px 32px 0 102px;
     }
 }
