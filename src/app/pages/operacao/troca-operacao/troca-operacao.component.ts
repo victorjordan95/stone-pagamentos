@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -35,6 +36,16 @@ export class TrocaOperacaoComponent implements OnInit {
     // Função para fechar o modal
     dismissModal() {
         this.operation.hide();
+    }
+
+    onSubmit(f: NgForm) {
+        console.log('oi!');
+    }
+
+    onChange(currencyId) {
+        this.currencyOption = currencyId;
+        this.quantityOption = '';
+        this.values = 0;
     }
 
 }
