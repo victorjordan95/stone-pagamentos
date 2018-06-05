@@ -23,11 +23,12 @@ export class TrocaOperacaoComponent implements OnInit {
     }
 
     // Função para inicializar o modal
-    showModal(currencyOptions): void {
-        this.currencyOptions = currencyOptions;
+    showModal(currenciesValue, userCurrencies): void {
+        this.currencyOptions = userCurrencies;
         // Inicializa o modal com a
         // primeira moeda selecionada
-        this.currencyOption = currencyOptions[0].id;
+        this.currencyOption = userCurrencies[0].id;
+        this.currencies = currenciesValue;
         this.operation.show();
     }
 

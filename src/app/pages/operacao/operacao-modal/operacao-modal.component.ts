@@ -5,7 +5,6 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { DEFAULT_ECDH_CURVE } from 'tls';
 
 @Component({
     selector: 'app-operacao-modal',
