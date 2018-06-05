@@ -27,7 +27,7 @@ export class LoginFormComponent  {
         ).then(ok => {
             const moedas = [
                 {currencyName: 'Real', currentlyValue: 100000},
-                {currencyName: 'Dólar', currentlyValue: 0},
+                {currencyName: 'Brita', currentlyValue: 0},
                 {currencyName: 'Bitcoin', currentlyValue: 0}
             ];
 

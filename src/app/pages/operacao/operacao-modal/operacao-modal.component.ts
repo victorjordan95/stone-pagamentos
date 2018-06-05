@@ -24,7 +24,7 @@ export class OperacaoModalComponent implements OnInit {
     public quantityOption = '';
     public currencyOptions = [
         { 'id': 0, 'currency': 'Real' },
-        { 'id': 1, 'currency': 'Dólar' },
+        { 'id': 1, 'currency': 'Brita' },
         { 'id': 2, 'currency': 'Bitcoin' },
     ];
     public currencyOption;
@@ -57,8 +57,8 @@ export class OperacaoModalComponent implements OnInit {
             .subscribe(
                 currencies => {
                     // Subscribe em currencies e popula o objeto currencies.
-                    // A API utilizada retorna um Array e para que seja feita a
-                    // iteração dos valores, é necessário converter em um objeto.
+                    // A API utilizada retorna um Objeto e para que seja feita a
+                    // iteração dos valores, é necessário converter em um Array.
                     this.currencies = [
                         {
                             valor: currencies['valores']['USD'].valor,
@@ -82,6 +82,8 @@ export class OperacaoModalComponent implements OnInit {
         } else {
             this.isBuying = false;
         }
+        // Inicializa o modal com a
+        // primeira moeda selecionada
         this.currencyOption = this.currencyOptions[0].id;
         this.operation.show();
     }
@@ -154,8 +156,6 @@ export class OperacaoModalComponent implements OnInit {
     // Recebe os valores do form para
     // atualizar a árvore selecionada
     _addCurrency(form) {
-        // const moedaId = this.isBuying === true ? form.value.currency : 0;
-        // const moedaName = this.isBuying === true ? this.currencyOptions[form.value.currency].currency : 'Real';
         if (this.isBuying) {
             this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
                 {

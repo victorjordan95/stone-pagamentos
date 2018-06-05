@@ -28,7 +28,6 @@ export class OperacaoComponent implements OnInit {
             this.angularFire.list(`${this.userId}/moedas`).valueChanges().subscribe(
                 currencies => {
                     this.currencies = currencies;
-                    console.log(currencies);
                     this.isLoaded = true;
                 }
             );

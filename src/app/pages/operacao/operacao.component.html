@@ -17,8 +17,7 @@
             </svg>
             <span class="option-text">Vender</span>
         </li>
-        <li class="option-list">
-
+        <li class="option-list" (click)="showModal('troca')">
             <svg class="icon icon-arrow-repeat-outline">
                 <use xlink:href="#icon-arrow-repeat-outline"></use>
             </svg>
@@ -38,7 +37,7 @@
         </header>
         <div class="card-body">
             <p class="title">
-                {{currency.currentlyValue | number : '1.2-2'}}
+                {{currency.currentlyValue | number : '1.2-6'}}
             </p>
             <p class="subtitle">
                 {{today | date:'dd/MM/yyyy HH:mm'}}
