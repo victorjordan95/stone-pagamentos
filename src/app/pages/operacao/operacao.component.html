@@ -17,7 +17,7 @@
             </svg>
             <span class="option-text">Vender</span>
         </li>
-        <li class="option-list" (click)="showModal('troca')">
+        <li class="option-list" (click)="showChangeModal()">
             <svg class="icon icon-arrow-repeat-outline">
                 <use xlink:href="#icon-arrow-repeat-outline"></use>
             </svg>
@@ -31,7 +31,7 @@
         </svg>
     </button>
 
-    <div class="card" *ngFor="let currency of currencies">
+    <div class="card" *ngFor="let currency of userCurrencies">
         <header class="card-header">
             {{currency.currencyName}}
         </header>
@@ -48,4 +48,5 @@
 </section>
 <app-navbar></app-navbar>
 <app-operacao-modal></app-operacao-modal>
+<app-troca-operacao></app-troca-operacao>
 

@@ -20,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { TrocaOperacaoComponent } from './pages/operacao/troca-operacao/troca-operacao.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
         OperacaoComponent,
         OperacaoModalComponent,
         LoginComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        TrocaOperacaoComponent
     ],
     imports: [
         BrowserModule,

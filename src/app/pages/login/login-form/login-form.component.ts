@@ -26,9 +26,9 @@ export class LoginFormComponent  {
             f.controls.senha.value
         ).then(ok => {
             const moedas = [
-                {currencyName: 'Real', currentlyValue: 100000},
-                {currencyName: 'Brita', currentlyValue: 0},
-                {currencyName: 'Bitcoin', currentlyValue: 0}
+                {id: 0, currencyName: 'Real', currentlyValue: 100000},
+                {id: 1, currencyName: 'Brita', currentlyValue: 0},
+                {id: 2, currencyName: 'Bitcoin', currentlyValue: 0}
             ];
 
             // Cadastra os tipos de moedas

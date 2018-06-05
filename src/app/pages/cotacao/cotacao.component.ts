@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class CotacaoComponent implements OnInit {
 
     private currencySubscription: Subscription;
-    currencies;
+    private currencies;
 
     constructor(public _sharedService: SharedService) { }
 
