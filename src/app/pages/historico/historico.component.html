@@ -12,7 +12,7 @@
                 {{dado.createDate | date:'dd-MM-yyyy HH:mm'}}
             </p>
         </div>
-        <div class="currency-data">
+        <div class="currency-data text-right">
             <span class="currency-operation" [ngStyle]="{'background-color': dado.operationType === 'Compra' ? '#4caf50' : '#c62828' }">
                 {{dado.operationType}}
             </span>

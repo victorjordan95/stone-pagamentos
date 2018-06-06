@@ -43,6 +43,11 @@
             font-size: 12px;
             padding: 0 7px;
         }
+
+        .currency-type {
+            color: #424242;
+            padding: 0px 3px;
+        }
     }
 
     .currency {
@@ -90,10 +95,6 @@
             color: $texto;
             display: block;
             font-size: 1.1em;
-            text-align: left;
-            @media (min-width: $screen-desktop-min) {
-                text-align: left;
-            }
         }
 
     }
