@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,10 +13,11 @@ import { Observable } from 'rxjs';
     templateUrl: './login-form.component.html',
     providers: [AngularFireAuth, AngularFireDatabase]
 })
-export class LoginFormComponent  {
+export class LoginFormComponent {
 
     public password = '';
-    constructor(private afAuth: AngularFireAuth, private router: Router, private angularFire: AngularFireDatabase) { }
+    constructor(private afAuth: AngularFireAuth, private router: Router, private angularFire: AngularFireDatabase,
+        private toastr: ToastrService) { }
 
     onSubmit(f: NgForm) {
 
@@ -26,9 +28,9 @@ export class LoginFormComponent  {
             f.controls.senha.value
         ).then(ok => {
             const moedas = [
-                {id: 0, currencyName: 'Real', currentlyValue: 100000},
-                {id: 1, currencyName: 'Brita', currentlyValue: 0},
-                {id: 2, currencyName: 'Bitcoin', currentlyValue: 0}
+                { id: 0, currencyName: 'Real', currentlyValue: 100000 },
+                { id: 1, currencyName: 'Brita', currentlyValue: 0 },
+                { id: 2, currencyName: 'Bitcoin', currentlyValue: 0 }
             ];
 
             // Cadastra os tipos de moedas
@@ -38,8 +40,12 @@ export class LoginFormComponent  {
             f.controls.email.setValue('');
             f.controls.senha.setValue('');
 
+            this.toastr.success('Sua conta foi criada com sucesso!', 'Sucesso!');
+
             // Redireciona para a tela de login
             this.router.navigate(['/']);
+        }).catch((error) => {
+            this.toastr.error('Endereço de e-mail já está em uso!', 'Erro!');
         });
     }
 }
