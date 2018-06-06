@@ -26,17 +26,12 @@ export class OperacaoModalComponent {
     public userCurrencies;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
-        private afAuth: AngularFireAuth) {
-        this.afAuth.authState.subscribe(user => {
-            if (user) {
-                this.userId = user.uid;
-            }
-        });
-    }
+        private afAuth: AngularFireAuth) { }
 
     // Função para inicializar o modal
     // this.currenciesValue, this.currencyOptions
-    showModal(type, currenciesValue, userCurrencies ): void {
+    showModal(type, currenciesValue, userCurrencies, userId): void {
+        this.userId = userId;
         this.currencyOptions = userCurrencies;
         // Inicializa o modal com a
         // primeira moeda selecionada
@@ -77,6 +72,7 @@ export class OperacaoModalComponent {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
+        debugger;
         // Chama a função para
         // atualizar o histórico
         this._updateHistoric(form);
@@ -84,7 +80,7 @@ export class OperacaoModalComponent {
         // Caso o usuário esteja
         // comprando real, o ato de comprar
         // deve apenas somar ao montante total
-        if (form.value.currency == 0) {
+        if (this.currencyOptions[form.value.currency].currencyName === 'Real') {
             // Adiciona a quantidade de Real ao
             // montante do usuário
             this._addCurrency(form);
@@ -129,7 +125,7 @@ export class OperacaoModalComponent {
             this.angularFire.object(`${this.userId}/moedas/${form.value.currency}`).update(
                 {
                     currencyName: this.currencyOptions[form.value.currency].currencyName,
-                    currentlyValue: parseFloat(this._calculateValue(form.value.quantity)) +
+                    currentlyValue: this._calculateValue(form.value.quantity) +
                         parseFloat(this.currencyOptions[form.value.currency].currentlyValue)
                 }
             );
@@ -147,7 +143,7 @@ export class OperacaoModalComponent {
                 {
                     currencyName: 'Real',
                     currentlyValue: parseFloat(this.currencyOptions[0].currentlyValue) -
-                        parseFloat(this._calculateValue(form.value.quantity))
+                        this._calculateValue(form.value.quantity)
                 }
             );
 
@@ -168,14 +164,8 @@ export class OperacaoModalComponent {
     // Calcula o valor de acordo com a
     // moeda selecionada e retorna o total
     // convertido.
-    _calculateValue(value) {
-        if (this.currencyOption == 0) {
-            return value;
-        } else if (this.currencyOption == 1) {
-            return value * this.currencies[0].valor;
-        } else {
-            return value * this.currencies[1].valor;
-        }
+    _calculateValue(value: number) {
+        return value * this.currencies[this.currencyOption].valor;
     }
 
 }

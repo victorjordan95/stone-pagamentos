@@ -16,7 +16,7 @@ export class TrocaOperacaoComponent implements OnInit {
     public quantityOption = '';
     public currencyOptions;
     public currencyOption;
-    public userCurrencies;
+    public currencyForChange;
 
     constructor() { }
 
@@ -24,8 +24,11 @@ export class TrocaOperacaoComponent implements OnInit {
     }
 
     // Função para inicializar o modal
+    // recebe os valores das moedas e
+    // as moedas que o usuário possui
     showModal(currenciesValue, userCurrencies): void {
         this.currencyOptions = userCurrencies;
+
         // Inicializa o modal com a
         // primeira moeda selecionada
         this.currencyOption = userCurrencies[0].id;
@@ -44,8 +47,20 @@ export class TrocaOperacaoComponent implements OnInit {
 
     onChange(currencyId) {
         this.currencyOption = currencyId;
-        this.quantityOption = '';
-        this.values = 0;
+        // this.values = this._calcDifference(quantity);
+    }
+
+    changeCurrency(currency) {
+        this.currencyForChange = currency;
+        console.log(currency);
+    }
+
+    onKey(quantity) {
+        this.values = this._calcDifference(quantity);
+    }
+
+    _calcDifference(quantity) {
+        return (quantity * this.currencies[this.currencyOption].valor) / this.currencies[this.currencyForChange].valor;
     }
 
 }

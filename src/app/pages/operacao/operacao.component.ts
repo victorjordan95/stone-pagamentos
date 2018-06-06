@@ -54,6 +54,10 @@ export class OperacaoComponent implements OnInit {
                     // iteração dos valores, é necessário converter em um Array.
                     this.currenciesValue = [
                         {
+                            valor: 1,
+                            data: this._sharedService.convertDate(this.today)
+                        },
+                        {
                             valor: currenciesValue['valores']['USD'].valor,
                             data: this._sharedService.convertDate(currenciesValue['valores']['USD'].ultima_consulta),
                             icon: 'icon-dollar-sign'
@@ -69,7 +73,7 @@ export class OperacaoComponent implements OnInit {
     }
 
     showModal(type) {
-        this.modalComponent.showModal(type, this.currenciesValue, this.userCurrencies);
+        this.modalComponent.showModal(type, this.currenciesValue, this.userCurrencies, this.userId);
         this.showOptions();
     }
 

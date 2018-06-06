@@ -27,14 +27,25 @@
 
                     </div>
 
-                    <!-- <div class="form-group">
-                        <label>Quantidade</label>
-                        <input type="tel" [(ngModel)]="quantityOption" name="quantity" #quantity class="form-control" (keyup)="onKey(quantity.value)">
-                    </div> -->
+                    <div class="form-group">
+
+                        <label>Moeda para troca</label>
+                        <select class="form-control" [ngModel]="currencyForChange" name="currencyForChange" required (change)="changeCurrency($event.target.value)">
+                            <option *ngFor="let currency of currencyOptions" value="{{currency.id}}">
+                                {{currency.currencyName}}
+                            </option>
+                        </select>
+
+                    </div>
 
                     <div class="form-group">
-                        <label>Valor convertido para: </label>
-                        <p>R$ {{values | number : '1.2-2'}}</p>
+                        <label>Quantidade</label>
+                        <input type="tel" [(ngModel)]="quantityOption" name="quantity" #quantity class="form-control" (keyup)="onKey(quantity.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Valor convertido é: </label>
+                        <p>{{values | number : '1.2-2'}}</p>
                     </div>
                 </div>
 
