@@ -103,6 +103,7 @@ export class OperacaoModalComponent {
         this.angularFire.list(`${this.userId}/historico`).push(
             {
                 createDate: `${Date.parse(new Date().toString())}`,
+                operationType: `${this.isBuying ? 'Compra' : 'Venda'}`,
                 currencyId: form.value.currency,
                 currencyName: this.currencyOptions[form.value.currency].currencyName,
                 quantity: form.value.quantity,
