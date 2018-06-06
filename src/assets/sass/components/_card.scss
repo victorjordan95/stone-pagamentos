@@ -80,7 +80,7 @@
         justify-content: space-between;
         padding: 8px;
         @media (min-width: $screen-desktop-min) {
-            flex-flow: column wrap;
+            flex-flow: row wrap;
             justify-content: space-between;
         }
 

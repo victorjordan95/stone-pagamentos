@@ -13,6 +13,12 @@
     right: 24px;
     width: 50px;
     z-index: 5;
+    @media (min-width: $screen-desktop-min) {
+        bottom: 50px;
+        height: 60px;
+        right: 50px;
+        width: 60px;
+    }
     &.primary {
         background-color: $verde-principal;
     }
