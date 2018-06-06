@@ -33,6 +33,18 @@
 
     }
 
+    > .currency-data {
+        display: flex;
+        flex-flow: column wrap;
+
+        .currency-operation {
+            border-radius: 40px;
+            color: #fff;
+            font-size: 12px;
+            padding: 0 7px;
+        }
+    }
+
     .currency {
         align-self: center;
         color: $texto;
@@ -78,7 +90,7 @@
             color: $texto;
             display: block;
             font-size: 1.1em;
-            text-align: right;
+            text-align: left;
             @media (min-width: $screen-desktop-min) {
                 text-align: left;
             }
