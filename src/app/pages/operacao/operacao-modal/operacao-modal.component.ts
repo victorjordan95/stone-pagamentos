@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SharedService } from './../../shared/shared.service';
 import { Subscription } from 'rxjs';
@@ -26,7 +27,7 @@ export class OperacaoModalComponent {
     public userCurrencies;
 
     constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
-        private afAuth: AngularFireAuth) { }
+        private afAuth: AngularFireAuth, private toastr: ToastrService) { }
 
     // Função para inicializar o modal
     // this.currenciesValue, this.currencyOptions
@@ -72,7 +73,6 @@ export class OperacaoModalComponent {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
-        debugger;
         // Chama a função para
         // atualizar o histórico
         this._updateHistoric(form);
@@ -95,6 +95,8 @@ export class OperacaoModalComponent {
         form.controls.quantity.setValue('');
         this.values = 0;
         this.dismissModal();
+        this._showMessage(this.currencyOptions[form.value.currency].currencyName);
+
     }
 
     // Atualiza o histórico com a operação
@@ -167,6 +169,15 @@ export class OperacaoModalComponent {
     // convertido.
     _calculateValue(value: number) {
         return value * this.currencies[this.currencyOption].valor;
+    }
+
+    // Exibe mensagem de alerta
+    _showMessage(moeda) {
+        if (this.isBuying) {
+            this.toastr.success(`Compra da moeda "${moeda}" foi realizada com sucesso `, 'Sucesso!');
+        } else {
+            this.toastr.success(`Venda da moeda "${moeda}" foi realizada com sucesso`, 'Sucesso!');
+        }
     }
 
 }

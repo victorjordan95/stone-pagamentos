@@ -2,6 +2,8 @@ import { LoginFormComponent } from './pages/login/login-form/login-form.componen
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -45,7 +47,14 @@ import { TrocaOperacaoComponent } from './pages/operacao/troca-operacao/troca-op
         AngularFireModule.initializeApp(FirebaseConfig),
         AngularFirestoreModule,
         AngularFireAuthModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            preventDuplicates: true,
+            progressBar: true,
+            tapToDismiss: true,
+            closeButton: true
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]
