@@ -5,20 +5,19 @@
     </h1>
 
     <ul id="js-fabOptions" class="fab-options">
-        <li class="option-list" (click)="showModal()">
+        <li class="option-list" (click)="showModal('compra')">
             <svg class="icon icon-plus">
                 <use xlink:href="#icon-plus"></use>
             </svg>
             <span class="option-text">Comprar</span>
         </li>
-        <li class="option-list">
+        <li class="option-list" (click)="showModal('venda')">
             <svg class="icon icon-minus">
                 <use xlink:href="#icon-minus"></use>
             </svg>
             <span class="option-text">Vender</span>
         </li>
-        <li class="option-list">
-
+        <li class="option-list" (click)="showChangeModal()">
             <svg class="icon icon-arrow-repeat-outline">
                 <use xlink:href="#icon-arrow-repeat-outline"></use>
             </svg>
@@ -26,52 +25,18 @@
         </li>
     </ul>
 
-    <button id="js-fabButton" class="fab-btn primary rotate" (click)="showOptions()">
-        +
-    </button>
+    <button id="js-fabButton" class="fab-btn primary rotate" (click)="showOptions()">+</button>
 
-    <div class="card">
+    <div class="card" *ngFor="let currency of userCurrencies">
         <header class="card-header">
-            R$
+            {{currency.currencyName}}
         </header>
         <div class="card-body">
             <p class="title">
-                100.000,00
+                {{currency.currentlyValue | number : '1.2-2'}}
             </p>
             <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-    </div>
-
-    <div class="card">
-        <header class="card-header">
-            <svg class="icon icon-dollar-sign">
-                <use xlink:href="#icon-dollar-sign"></use>
-            </svg>
-        </header>
-        <div class="card-body">
-            <p class="title">
-                100.000,00
-            </p>
-            <p class="subtitle">
-                20/05/2018 - 11:20
-            </p>
-        </div>
-    </div>
-
-    <div class="card">
-        <header class="card-header">
-            <svg class="icon icon-bitcoin">
-                <use xlink:href="#icon-bitcoin"></use>
-            </svg>
-        </header>
-        <div class="card-body">
-            <p class="title">
-                100.000,00
-            </p>
-            <p class="subtitle">
-                20/05/2018 - 11:20
+                {{today | date:'dd/MM/yyyy HH:mm'}}
             </p>
         </div>
     </div>
@@ -79,4 +44,5 @@
 </section>
 <app-navbar></app-navbar>
 <app-operacao-modal></app-operacao-modal>
+<app-troca-operacao></app-troca-operacao>
 

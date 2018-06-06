@@ -5,12 +5,21 @@
     </h1>
 
     <div class="card inline" *ngFor="let dado of items">
-        <span class="currency-type">{{dado.currencyName}}</span>
+
         <div class="currency-info">
             <span class="card-mountant"> {{dado.value | number : '1.2-2'}} </span>
             <p class="subtitle">
                 {{dado.createDate | date:'dd-MM-yyyy HH:mm'}}
             </p>
+        </div>
+        <div class="currency-data text-right">
+            <span class="currency-operation" [ngStyle]="{'background-color': dado.operationType === 'Compra' ? '#4caf50' : '#c62828' }">
+                {{dado.operationType}}
+            </span>
+            <span class="currency-type">
+                {{dado.currencyName}}
+            </span>
+
         </div>
 
     </div>

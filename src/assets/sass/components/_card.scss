@@ -33,6 +33,23 @@
 
     }
 
+    > .currency-data {
+        display: flex;
+        flex-flow: column wrap;
+
+        .currency-operation {
+            border-radius: 40px;
+            color: #fff;
+            font-size: 12px;
+            padding: 0 7px;
+        }
+
+        .currency-type {
+            color: #424242;
+            padding: 0px 3px;
+        }
+    }
+
     .currency {
         align-self: center;
         color: $texto;
@@ -63,7 +80,7 @@
         justify-content: space-between;
         padding: 8px;
         @media (min-width: $screen-desktop-min) {
-            flex-flow: column wrap;
+            flex-flow: row wrap;
             justify-content: space-between;
         }
 
@@ -78,10 +95,6 @@
             color: $texto;
             display: block;
             font-size: 1.1em;
-            text-align: right;
-            @media (min-width: $screen-desktop-min) {
-                text-align: left;
-            }
         }
 
     }

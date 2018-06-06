@@ -1,9 +1,11 @@
 .fab-btn {
+    align-content: center;
     border-radius: 50%;
     bottom: 70px;
     color: #fff;
     box-shadow: 1px 0px 10px 0px #9a9a9a;
     display: flex;
+    flex-flow: row wrap;
     font-size: 32px;
     height: 50px;
     justify-content: center;
@@ -11,6 +13,12 @@
     right: 24px;
     width: 50px;
     z-index: 5;
+    @media (min-width: $screen-desktop-min) {
+        bottom: 50px;
+        height: 60px;
+        right: 50px;
+        width: 60px;
+    }
     &.primary {
         background-color: $verde-principal;
     }

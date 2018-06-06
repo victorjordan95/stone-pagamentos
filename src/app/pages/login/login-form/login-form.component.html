@@ -16,7 +16,7 @@
 
         <label class="login-label">Senha</label>
         <input type="password" class="input-group" 
-        name="senha" [ngModel] minlength="5" #password="ngModel"
+        name="senha" [ngModel] minlength="6" #password="ngModel"
         placeholder="Exemplo: *******" required  
         autocomplete="current-password">
 
@@ -27,7 +27,7 @@
             Campo senha é obrigatório!
         </span>
 
-        <button type="submit" class="btn btn-success" [disabled]="f.form.invalid">Acessar</button>
+        <button type="submit" class="btn btn-success" [disabled]="f.form.invalid">Criar conta</button>
     </form>
 
     <a routerLink="/" class="register">Voltar para login</a>
