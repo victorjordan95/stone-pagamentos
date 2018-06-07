@@ -36,6 +36,9 @@
     display: none;
     position: fixed;
     right: 0;
+    @media (min-width: $screen-desktop-min) {
+        right: 35px;
+    }
     .option-list {
         align-content: baseline;
         cursor: pointer;
