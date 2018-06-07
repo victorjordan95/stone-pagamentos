@@ -39,11 +39,7 @@ export class OperacaoModalComponent {
         this.currencyOption = userCurrencies[0].id;
 
         this.currencies = currenciesValue;
-        if (type === 'compra') {
-            this.isBuying = true;
-        } else {
-            this.isBuying = false;
-        }
+        type === 'compra' ? this.isBuying = true : this.isBuying = false;
         this.operation.show();
     }
 
@@ -73,30 +69,42 @@ export class OperacaoModalComponent {
     // Faz o cálculo novamente
     // Desconta o valor total ou acrescenta
     onSubmit(form: NgForm) {
-        // Chama a função para
-        // atualizar o histórico
-        this._updateHistoric(form);
 
         // Caso o usuário esteja
         // comprando real, o ato de comprar
         // deve apenas somar ao montante total
         if (this.currencyOptions[form.value.currency].currencyName === 'Real') {
-            // Adiciona a quantidade de Real ao
-            // montante do usuário
             this._addCurrency(form);
+            this._updateHistoric(form);
         } else {
-            // Adiciona a quantidade da moeda
-            // escolhida e remove do real a quantidade
-            // que será gasta para realizar a operação
-            this._addCurrency(form);
-            this._removeCurrency(form);
+            this._verifyAmount(form);
         }
 
         form.controls.quantity.setValue('');
         this.values = 0;
         this.dismissModal();
-        this._showMessage(this.currencyOptions[form.value.currency].currencyName);
+    }
 
+    // Verificação se o saldo que o usuário
+    // está comprando é menor do que ele possui
+    _verifyAmount(form) {
+
+        if (this._calculateValue(form.value.quantity) > this.currencyOptions[0].currentlyValue) {
+            this.toastr.error('Saldo insuficiente para realizar esta operação', 'Erro na operação!');
+            return;
+        }
+
+        // Adiciona a quantidade da moeda escolhida
+        this._addCurrency(form);
+
+        // Remove do real a quantidade
+        // que será gasta
+        this._removeCurrency(form);
+
+        // Atualiza historico apenas
+        // se a transação for concluida
+        this._updateHistoric(form);
+        this._showMessage(this.currencyOptions[form.value.currency].currencyName);
     }
 
     // Atualiza o histórico com a operação
