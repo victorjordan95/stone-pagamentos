@@ -34,12 +34,19 @@ export class OperacaoModalComponent {
     showModal(type, currenciesValue, userCurrencies, userId): void {
         this.userId = userId;
         this.currencyOptions = userCurrencies;
+
         // Inicializa o modal com a
         // primeira moeda selecionada
         this.currencyOption = userCurrencies[0].id;
 
+        // Recebe a cotação
         this.currencies = currenciesValue;
+
+        // Verifica se o usuário está
+        // comprando ou vendendo
         type === 'compra' ? this.isBuying = true : this.isBuying = false;
+
+        // Exibe o modal
         this.operation.show();
     }
 
@@ -89,7 +96,12 @@ export class OperacaoModalComponent {
     // está comprando é menor do que ele possui
     _verifyAmount(form) {
 
-        if (this._calculateValue(form.value.quantity) > this.currencyOptions[0].currentlyValue) {
+        if (this.isBuying && this._calculateValue(form.value.quantity) > this.currencyOptions[0].currentlyValue) {
+            this.toastr.error('Saldo insuficiente para realizar esta operação', 'Erro na operação!');
+            return;
+        }
+
+        if (!this.isBuying && form.value.quantity > this.currencyOptions[form.value.currency].currentlyValue) {
             this.toastr.error('Saldo insuficiente para realizar esta operação', 'Erro na operação!');
             return;
         }
@@ -167,6 +179,13 @@ export class OperacaoModalComponent {
                 {
                     currencyName: this.currencyOptions[form.value.currency].currencyName,
                     currentlyValue: parseFloat(this.currencyOptions[form.value.currency].currentlyValue) - parseFloat(form.value.quantity)
+                }
+            );
+            this.angularFire.object(`${this.userId}/moedas/0`).update(
+                {
+                    currencyName: 'Real',
+                    currentlyValue: parseFloat(this.currencyOptions[0].currentlyValue)
+                        + this._calculateValue(parseFloat(form.value.quantity))
                 }
             );
         }
