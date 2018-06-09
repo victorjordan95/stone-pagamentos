@@ -1,4 +1,4 @@
-<section class="section container flexrow" *ngIf="!_sharedService.isLoading">
+<section class="section content flexrow" *ngIf="!_sharedService.isLoading">
 
     <h1 class="title">
         Cotação
@@ -9,7 +9,7 @@
             <use attr.xlink:href="#{{item.icon}}"></use>
         </svg>
         <div class="currency-info">
-            <span class="card-mountant"> {{item.valor | number : '1.2-2'}} </span>
+            <span class="card-mountant text-right"> {{item.valor | number : '1.2-2'}} </span>
             <p class="subtitle">
                 Atualizado em {{item.data}}
             </p>

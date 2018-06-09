@@ -9,17 +9,13 @@ main {
     }
 }
 
-.container {
-    padding: 16px 16px 0;
+.content {
+    margin-bottom: 48px;
+    padding: 16px 16px;
+    width: 100%;
     @media (min-width: $screen-desktop-min) {
+        margin-bottom: 0;
         padding: 32px 32px 0 102px;
-    }
-}
-
-.fluid-container {
-    padding: 0;
-    @media (min-width: $screen-desktop-min) {
-        padding: 0 0 0 86px;
     }
 }
 

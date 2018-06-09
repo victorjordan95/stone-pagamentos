@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/victorjordan95/stone-pagamentos.svg?branch=develop)](https://travis-ci.org/victorjordan95/stone-pagamentos)
+
 # StoneTeste
 Este projeto tem como objetivo a criação de uma carteira digital, sendo o projeto aplicado como teste para vaga de desenvolvedor front-end. A aplicação foi gerada com [Angular CLI](https://github.com/angular/angular-cli) versão 6.0.0.
 

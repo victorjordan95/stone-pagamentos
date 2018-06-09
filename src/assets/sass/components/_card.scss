@@ -5,6 +5,7 @@
     box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
     margin-bottom: 16px;
     padding: 16px 0 0;
+    width: 100%;
     @media (min-width: $screen-desktop-min) {
         width: 30%;
     }
@@ -31,6 +32,16 @@
             width: 100%;
         }
 
+    }
+
+    > .currency-data {
+        display: flex;
+        flex-flow: column wrap;
+
+        .currency-type {
+            color: #424242;
+            padding: 0px 3px;
+        }
     }
 
     .currency {
@@ -63,8 +74,25 @@
         justify-content: space-between;
         padding: 8px;
         @media (min-width: $screen-desktop-min) {
-            flex-flow: column wrap;
+            flex-flow: row wrap;
             justify-content: space-between;
+            margin: 12px auto;
+        }
+
+        .currency-info {
+
+            .currency-type {
+                color: #212121;
+                font-size: 1.2em;
+            }
+            
+            .currency-operation {
+                align-self: center;
+                border-radius: 40px;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 7px;
+            }
         }
 
         .icon {
@@ -74,14 +102,21 @@
             }
         }
 
+        .card-date {
+            color: $cinza-claro;
+            font-size: 0.7em;
+            margin: 8px 0 0;
+            line-height: 1;
+            text-align: center;
+            width: 100%;
+        }
+
         .card-mountant {
             color: $texto;
             display: block;
-            font-size: 1.1em;
-            text-align: right;
-            @media (min-width: $screen-desktop-min) {
-                text-align: left;
-            }
+            font-size: 0.9em;
+            margin: 0 0 2px;
+            line-height: 1.1;
         }
 
     }

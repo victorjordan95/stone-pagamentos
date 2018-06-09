@@ -1,17 +1,35 @@
-<section class="section container flexrow" *ngIf="isLoaded">
+<section class="section content flexrow" *ngIf="isLoaded">
 
     <h1 class="title">
         Histórico
     </h1>
 
     <div class="card inline" *ngFor="let dado of items">
-        <span class="currency-type">{{dado.currencyName}}</span>
-        <div class="currency-info">
-            <span class="card-mountant"> {{dado.value | number : '1.2-2'}} </span>
-            <p class="subtitle">
-                {{dado.createDate | date:'dd-MM-yyyy HH:mm'}}
-            </p>
+
+        <div class="currency-info w-100 flexrow">
+            <span class="currency-type">
+                {{dado.currencyName}}
+            </span>
+            <span class="currency-operation" [ngStyle]="{'background-color': dado.operationType === 'Compra' ? '#4caf50' : '#c62828' }">
+                {{dado.operationType}}
+            </span>
+
         </div>
+
+        <div class="currency-data">
+            <span class="card-mountant">
+                Quantidade: {{dado.quantity}}
+            </span>
+            <span class="card-mountant">
+                Total {{ dado.operationType === 'Compra' ? 'pago' : 'recebido' }}: 
+                {{dado.value | number : '1.2-2'}} 
+            </span>
+        </div>
+
+        <p class="card-date text-center">
+            {{dado.createDate | date:'dd-MM-yyyy HH:mm'}}
+        </p>
+
 
     </div>
 </section>

@@ -1,12 +1,13 @@
-<div class="modal fade" bsModal #operationModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+<div class="modal fade" bsModal #changeOperationModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-static-name">
 
     <div class="modal-dialog modal-md">
 
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 id="dialog-static-name" class="modal-title pull-left">{{isBuying ? 'Comprar' : 'Vender'}}</h4>
-                <button type="button" class="close pull-right" aria-label="Close" (click)="operationModal.hide()">
+                <h4 id="dialog-static-name" class="modal-title pull-left">Trocar</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="changeOperationModal.hide()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -27,19 +28,30 @@
                     </div>
 
                     <div class="form-group">
+
+                        <label>Moeda para troca</label>
+                        <select class="form-control" [ngModel]="currencyForChange" name="currencyForChange" required (change)="changeCurrency($event.target.value)">
+                            <option *ngFor="let currency of currencyOptions" value="{{currency.id}}">
+                                {{currency.currencyName}}
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
                         <label>Quantidade</label>
                         <input type="tel" [(ngModel)]="quantityOption" name="quantity" #quantity class="form-control" (keyup)="onKey(quantity.value)">
                     </div>
 
                     <div class="form-group">
-                        <label>Valor a {{isBuying ? 'pagar' : 'receber'}}</label>
-                        <p>R$ {{values | number : '1.2-2'}}</p>
+                        <label>Valor convertido é: </label>
+                        <p>{{values | number : '1.2-6'}}</p>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn" (click)="operationModal.hide()">Cancelar</button>
-                    <button type="submit" class="btn btn-success" [disabled]="!f.valid">{{isBuying ? 'Comprar' : 'Vender'}}</button>
+                    <button type="button" class="btn" (click)="changeOperationModal.hide()">Cancelar</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!f.valid">Trocar</button>
                 </div>
             </form>
 

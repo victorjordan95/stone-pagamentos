@@ -1,19 +1,30 @@
-.flexrow{
-    @media (min-width: $screen-desktop-min) {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-    }
+.flexrow {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
-.rotate{
+.rotate {
     transition: all 0.3s ease;
 }
 
-.rotate.down{
+.rotate.down {
     transform: rotate(45deg);
 }
 
 .has-error {
     color: $error;
 }
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+

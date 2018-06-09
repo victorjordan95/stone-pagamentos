@@ -2,6 +2,8 @@ import { LoginFormComponent } from './pages/login/login-form/login-form.componen
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { TrocaOperacaoComponent } from './pages/operacao/troca-operacao/troca-operacao.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +34,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
         OperacaoComponent,
         OperacaoModalComponent,
         LoginComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        TrocaOperacaoComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +47,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
         AngularFireModule.initializeApp(FirebaseConfig),
         AngularFirestoreModule,
         AngularFireAuthModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            preventDuplicates: true,
+            progressBar: true,
+            tapToDismiss: true,
+            closeButton: true
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]
