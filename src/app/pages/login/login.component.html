@@ -1,9 +1,10 @@
 <section class="login">
-    <svg class="icon icon-banknote">
-        <use xlink:href="#icon-banknote"></use>
-    </svg>
-    <h1 class="title">Compre | Venda | Guarde</h1>
-    <h2 class="subtitle">Aqui seu dinheiro está sob controle</h2>
+
+    <h2 class="title">Fazer login no</h2>
+    <h2 class="title">Walletstone</h2>
+    <p class="register">
+        Ou  <a routerLink="/cadastro" class="register">criar uma conta</a>
+    </p>
 
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="login-form">
         <label class="login-label">E-mail</label>
@@ -16,6 +17,5 @@
 
     </form>
 
-    <a routerLink="/cadastro" class="register">Não tenho conta ainda</a>
 </section>
 
