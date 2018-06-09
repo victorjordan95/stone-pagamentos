@@ -14,7 +14,7 @@ before_script:
   - cd ./functions && npm install
 
 script:
-  - ng build --prod && sw-precache --root=public --config=pre-cache-config.js
+  - npm run pwa
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
