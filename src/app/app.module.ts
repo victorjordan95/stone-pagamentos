@@ -24,6 +24,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { TrocaOperacaoComponent } from './pages/operacao/troca-operacao/troca-operacao.component';
 import { IconsComponent } from './components/icons/icons.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { IconsComponent } from './components/icons/icons.component';
         LoginComponent,
         LoginFormComponent,
         TrocaOperacaoComponent,
-        IconsComponent
+        IconsComponent,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,
