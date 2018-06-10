@@ -7,7 +7,27 @@ main {
     @media (min-width: $screen-desktop-min) {
         min-height: calc(100vh);
     }
+    position: relative;
+    z-index: 3;
 }
+
+.svg-bg {
+    display: none;
+    @media (min-width: $screen-desktop-min) {
+        background: #e0e0e0;
+        bottom: 0;
+        direction: ltr;
+        display: inherit;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+}
+
+
 
 .content {
     margin-bottom: 48px;

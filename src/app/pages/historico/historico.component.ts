@@ -24,7 +24,6 @@ export class HistoricoComponent implements OnInit {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.userId = user.uid;
-                console.log(this.userId);
             }
             // Pega os valores de historico e adiciona em
             // um Array de trás para frente. Desta forma os

@@ -6,6 +6,9 @@
     justify-content: center;
     height: 100vh;
     padding: 0 16px;
+    @media (min-width: $screen-tablet-min) {
+        padding: 0 25%;
+    }
     .title {
         font-size: 1.8em;
         margin: 4px 0;
