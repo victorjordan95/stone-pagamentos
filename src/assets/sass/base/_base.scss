@@ -25,6 +25,9 @@ main {
         top: 0;
         z-index: 1;
     }
+    svg:not(:root) {
+        height: 100%;
+    }
 }
 
 
