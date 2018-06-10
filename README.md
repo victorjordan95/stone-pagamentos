@@ -17,11 +17,6 @@ Necessário ter instalado localmente:
 * [AngularCLI](https://cli.angular.io/)
 
 
-## Trello
-Para ter uma melhor visualização do andamento do projeto, foi criado um trello onde está dividido em pequenas tasks. O board no trello foi criado usando os conceitos das metodologias ágeis. 
-
-Você pode visualizar o kanban através [deste link](https://trello.com/b/9Ez9admf/stone-pagamentos)
-
 ## Como Começar
 
 Para rodar em sua própria máquina, é necessário executar no terminal o comando `ng serve` para ter o servidor de desenvolvimento, que estará disponível na URL `http://localhost:4200/`. 
