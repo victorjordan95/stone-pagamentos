@@ -32,7 +32,6 @@ export class HistoricoComponent implements OnInit {
                 items => {
                     this.items = items.reverse();
                     this.isLoaded = true;
-                    console.log(this.items);
                 }
             );
         });

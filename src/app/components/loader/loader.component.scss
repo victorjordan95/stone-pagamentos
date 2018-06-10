@@ -1,89 +1,73 @@
-.loader-bg {
-    background-color: rgba(238, 238, 238, 0.7);
+.bg-loader {
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100vh;
+    max-width: 100vw;
     position: absolute;
-    width:100vw;
-    z-index: 4;
+    z-index: 10;
+    width: 100%;
 }
-
-#spinner.active {
-    display: block;
-}
-
-#spinner {
-    display: none;
+.loader-bg {
     position: absolute;
-    height: 60px;
-    width: 60px;
-    top: 40%;
-    left: 48%;
-    z-index: 1;
-}
-
-.ball {
+    left: calc(50% - 20px);
+    top: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    border: 4px #FAFAFA solid;
+    border-radius: 30px;
+  }
+  
+  .loader {
     position: absolute;
-    display: block;
-    background-color: #4CAF50;
-    left: 24px;
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-}
-
-#first {
-    animation-timing-function: cubic-bezier(0.5, 0.3, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-    animation-timing-function: cubic-bezier(0.5, 0.3, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-}
-
-#second {
-    animation-timing-function: cubic-bezier(0.5, 0.5, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-    animation-timing-function: cubic-bezier(0.5, 0.5, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-}
-
-#third {
-    animation-timing-function: cubic-bezier(0.5, 0.7, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-    animation-timing-function: cubic-bezier(0.5, 0.7, 0.9, 0.9);
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transform-origin: 6px 30px;
-}
-
-@keyframes rotate {
+    left: calc(50% - 20px);
+    top: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    border: 4px transparent solid;
+    border-top: 4px #E91E63  solid;
+    border-radius: 30px;
+    animation: loader .7s infinite;
+    animation-timing-function: linear;
+  }
+  
+  @-moz-keyframes loader {
     0% {
-        transform: rotate(0deg) scale(1);
+      -ms-transform: rotate(0deg); /* IE 9 */
+      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+      transform: rotate(0deg);
     }
+    
     100% {
-        transform: rotate(1440deg) scale(1);
+      -ms-transform: rotate(360deg); /* IE 9 */
+      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+      transform: rotate(360deg);
     }
-}
-
-@keyframes rotate {
+  }
+  
+  @-webkit-keyframes loader {
     0% {
-        transform: rotate(0deg) scale(1);
+      -ms-transform: rotate(0deg); /* IE 9 */
+      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+      transform: rotate(0deg);
     }
+    
     100% {
-        transform: rotate(1440deg) scale(1);
+      -ms-transform: rotate(360deg); /* IE 9 */
+      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+      transform: rotate(360deg);
     }
-}
-
+  }
+  
+  @keyframes loader {
+    0% {
+      -ms-transform: rotate(0deg); /* IE 9 */
+      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+      transform: rotate(0deg);
+    }
+    
+    100% {
+      -ms-transform: rotate(360deg); /* IE 9 */
+      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+      transform: rotate(360deg);
+    }
+  }
+  
