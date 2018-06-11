@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    private isLoaded;
+    public isLoaded;
 
     constructor(private afAuth: AngularFireAuth, private router: Router, private toastr: ToastrService) { }
 
