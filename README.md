@@ -20,7 +20,7 @@ Necessário ter instalado localmente:
 
 ## Como Começar
 
-Para rodar em sua própria máquina, é necessário executar no terminal o comando `ng serve` para ter o servidor de desenvolvimento, que estará disponível na URL `http://localhost:4200/`. 
+Para rodar em sua própria máquina, é necessário primeiramente instalar as dependências do projeto, rodando `npm i` dentro da pasta onde fora clonado o projeto e após terminar, executar no terminal o comando `ng serve` para ter o servidor de desenvolvimento, que estará disponível na URL `http://localhost:4200/`. 
 
 ## Lançamentos Principais
 
