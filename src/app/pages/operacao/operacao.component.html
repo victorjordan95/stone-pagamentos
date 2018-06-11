@@ -1,3 +1,4 @@
+<app-loader *ngIf="!isLoaded"></app-loader>
 <section class="section content flexrow">
 
     <h1 class="title">
@@ -25,7 +26,7 @@
         </li>
     </ul>
 
-    <button id="js-fabButton" class="fab-btn primary rotate" (click)="showOptions()">+</button>
+    <button id="js-fabButton" class="fab-btn primary rotation" (click)="showOptions()">+</button>
 
     <div class="card" *ngFor="let currency of userCurrencies">
         <header class="card-header">

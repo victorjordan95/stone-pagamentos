@@ -9,6 +9,27 @@ main {
     }
 }
 
+.svg-bg {
+    display: none;
+    @media (min-width: $screen-desktop-min) {
+        background: #e0e0e0;
+        bottom: 0;
+        direction: ltr;
+        display: inherit;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+    svg:not(:root) {
+        height: 100%;
+    }
+}
+
+
+
 .content {
     margin-bottom: 48px;
     padding: 16px 16px;

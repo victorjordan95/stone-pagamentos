@@ -6,42 +6,43 @@
     justify-content: center;
     height: 100vh;
     padding: 0 16px;
-    .icon {
-        display: block;
-        height: 100px;
-        width: 100px;
-        margin: 16px auto;
-        fill: $verde-principal;
+    position: relative;
+    z-index: 3;
+    @media (min-width: $screen-tablet-min) {
+        padding: 0 25%;
     }
     .title {
-        font-size: 1.3em;
-        margin: 0;
-        text-align: center;
+        font-size: 1.8em;
+        margin: 4px 0;
+        text-align: left;
         width: 100%;
     }
-
     .subtitle {
-        font-size: 1em;
-        margin: 8px 0 16px;
-        text-align: center;
-        width: 100%;
+        @extend .title;
+        font-size: 1.3em;
     }
-
     .login-form {
         width: 100%;
     }
-
     .login-label {
         margin: 16px 0 0;
     }
-
     .btn {
         height: 40px;
         margin-top: 36px;
         width: 100%;
     }
-
     .register {
+        text-align: left;
+        width: 100%;
+        >a {
+            color: #2196F3;
+            margin: 32px 0;
+            text-decoration: underline;
+        }
+    }
+
+    .link {
         color: #2196F3;
         margin: 32px 0;
         text-decoration: underline;

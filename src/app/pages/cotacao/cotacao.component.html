@@ -1,3 +1,5 @@
+<app-loader *ngIf="_sharedService.isLoading"></app-loader>
+
 <section class="section content flexrow" *ngIf="!_sharedService.isLoading">
 
     <h1 class="title">
@@ -19,5 +21,7 @@
 
 
 </section>
+
 <app-navbar></app-navbar>
+
 

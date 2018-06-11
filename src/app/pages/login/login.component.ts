@@ -12,17 +12,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+    public isLoaded;
+
     constructor(private afAuth: AngularFireAuth, private router: Router, private toastr: ToastrService) { }
 
     ngOnInit() {
+        this.isLoaded = true;
     }
 
     onSubmit(f: NgForm) {
+        this.isLoaded = false;
         if (!f.valid) {
             return;
         }
         this.afAuth.auth.signInWithEmailAndPassword(f.controls.email.value, f.controls.senha.value)
             .then(ok => {
+                this.isLoaded = true;
                 this.router.navigate(['/home']);
             })
             .catch(error => {

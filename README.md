@@ -1,34 +1,42 @@
 [![Build Status](https://travis-ci.org/victorjordan95/stone-pagamentos.svg?branch=develop)](https://travis-ci.org/victorjordan95/stone-pagamentos)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # StoneTeste
 Este projeto tem como objetivo a criação de uma carteira digital, sendo o projeto aplicado como teste para vaga de desenvolvedor front-end. A aplicação foi gerada com [Angular CLI](https://github.com/angular/angular-cli) versão 6.0.0.
 
-## Trello
-Para ter uma melhor visualização do andamento do projeto, foi criado um trello onde está dividido em pequenas tasks. O board no trello foi criado usando os conceitos das metodologias ágeis. 
+## Carteira Digital
 
-Você pode visualizar o kanban através [deste link](https://trello.com/b/9Ez9admf/stone-pagamentos)
+Wallestone é uma aplicação Web de carteira digital, desenvolvida com o intuito de ser o teste para a vaga de front-end que serve como intermédio para compra, venda e troca das moedas digitais Britas e Bitcoin. 
+A aplicação tem como objetivo ser um progressive web app (PWA), isto é, uma aplicação web construída com tecnologias para se comportar como aplicativos nativos. 
 
-## Executando a aplicação
+## Requerimento/Dependências
 
 Necessário ter instalado localmente:
 
 * [NodeJS](https://nodejs.org/en/)
 * [AngularCLI](https://cli.angular.io/)
 
-Rodar em seu terminal `ng serve` para ter o server dev, que estará disponível na URL `http://localhost:4200/`. 
 
-## Build
+## Como Começar
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Para rodar em sua própria máquina, é necessário executar no terminal o comando `ng serve` para ter o servidor de desenvolvimento, que estará disponível na URL `http://localhost:4200/`. 
 
-## Running unit tests
+## Lançamentos Principais
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A aplicação tem como principal objetivo ser uma carteira digital para o usuário, onde possa realizar operações entre as moedas determinads. 
+Podemos citar algumas possívels melhorias futuras, como por exemplo a criação do infinite scroll para melhorar a usabilidade e melhorar ainda mais o webapp no quesito de progressive web app. 
+Algumas destas melhorias já estão cadastradas no backlog, como pode ser visto no [Trello do projeto](https://trello.com/b/9Ez9admf/stone-pagamentos). O kanban está aberto e toda sugestão será muito bem aceita!
 
-## Running end-to-end tests
+## Status do Código
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Licença
 
-## Further help
+MIT License
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Créditos
+
+O projeto e a ideia do mesmo é de originalidade da [Stone Pagamentos](https://www.stone.com.br/) e o desenvolvimento desta ideia é de autoria de [Victor Jordan](https://victorjordan95.github.io), autor e colaborador do blog de desenvolvimento [Back&Front](https://backefront.com.br/).
+
+“So Long, and Thanks for All the Fish”
+
+
