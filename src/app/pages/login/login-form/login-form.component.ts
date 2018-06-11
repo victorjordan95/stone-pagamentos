@@ -16,10 +16,12 @@ import { Observable } from 'rxjs';
 export class LoginFormComponent {
 
     public password = '';
+    public isLoaded = true;
     constructor(private afAuth: AngularFireAuth, private router: Router, private angularFire: AngularFireDatabase,
         private toastr: ToastrService) { }
 
     onSubmit(f: NgForm) {
+        this.isLoaded = false;
 
         // Cria um novo usuário com os dados
         // passados pelo formulario HTML
@@ -43,9 +45,11 @@ export class LoginFormComponent {
             this.toastr.success('Sua conta foi criada com sucesso!', 'Sucesso!');
 
             // Redireciona para a tela de login
+            this.isLoaded = true;
             this.router.navigate(['/']);
         }).catch((error) => {
             this.toastr.error('Endereço de e-mail já está em uso!', 'Erro!');
+            this.isLoaded = true;
         });
     }
 }
