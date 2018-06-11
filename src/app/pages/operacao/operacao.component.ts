@@ -78,7 +78,7 @@ export class OperacaoComponent implements OnInit {
     }
 
     showChangeModal() {
-        this.changeModalComponent.showModal(this.currenciesValue, this.userCurrencies);
+        this.changeModalComponent.showModal(this.currenciesValue, this.userCurrencies, this.userId);
         this.showOptions();
     }
 
