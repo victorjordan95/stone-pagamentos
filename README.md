@@ -27,8 +27,6 @@ A aplicação tem como principal objetivo ser uma carteira digital para o usuár
 Podemos citar algumas possívels melhorias futuras, como por exemplo a criação do infinite scroll para melhorar a usabilidade e melhorar ainda mais o webapp no quesito de progressive web app. 
 Algumas destas melhorias já estão cadastradas no backlog, como pode ser visto no [Trello do projeto](https://trello.com/b/9Ez9admf/stone-pagamentos). O kanban está aberto e toda sugestão será muito bem aceita!
 
-## Status do Código
-
 ## Licença
 
 MIT License
