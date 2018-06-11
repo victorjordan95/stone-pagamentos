@@ -7,8 +7,6 @@ main {
     @media (min-width: $screen-desktop-min) {
         min-height: calc(100vh);
     }
-    position: relative;
-    z-index: 3;
 }
 
 .svg-bg {

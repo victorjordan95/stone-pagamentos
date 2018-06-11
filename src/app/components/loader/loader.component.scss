@@ -31,22 +31,16 @@
   
   @-moz-keyframes loader {
     0% {
-      -ms-transform: rotate(0deg); /* IE 9 */
-      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
       transform: rotate(0deg);
     }
     
     100% {
-      -ms-transform: rotate(360deg); /* IE 9 */
-      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
       transform: rotate(360deg);
     }
   }
   
   @-webkit-keyframes loader {
     0% {
-      -ms-transform: rotate(0deg); /* IE 9 */
-      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
       transform: rotate(0deg);
     }
     
@@ -59,14 +53,10 @@
   
   @keyframes loader {
     0% {
-      -ms-transform: rotate(0deg); /* IE 9 */
-      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
       transform: rotate(0deg);
     }
     
     100% {
-      -ms-transform: rotate(360deg); /* IE 9 */
-      -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
       transform: rotate(360deg);
     }
   }
