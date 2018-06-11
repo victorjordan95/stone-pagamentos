@@ -38,9 +38,6 @@ export class HistoricoComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.data = this.angularFire.list(`${this.userId}`).valueChanges().subscribe(items => {
-        //     console.log(items);
-        // });
     }
 
 }

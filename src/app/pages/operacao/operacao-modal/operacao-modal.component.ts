@@ -10,7 +10,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
     selector: 'app-operacao-modal',
     templateUrl: './operacao-modal.component.html',
-    providers: [SharedService, AngularFireDatabase, AngularFireAuth],
+    providers: [AngularFireDatabase, AngularFireAuth],
     encapsulation: ViewEncapsulation.None
 })
 export class OperacaoModalComponent {
@@ -26,8 +26,7 @@ export class OperacaoModalComponent {
     public currencyOption;
     public userCurrencies;
 
-    constructor(public _sharedService: SharedService, private angularFire: AngularFireDatabase,
-        private afAuth: AngularFireAuth, private toastr: ToastrService) { }
+    constructor(private angularFire: AngularFireDatabase, private afAuth: AngularFireAuth, private toastr: ToastrService) { }
 
     // Função para inicializar o modal
     // this.currenciesValue, this.currencyOptions
@@ -96,12 +95,8 @@ export class OperacaoModalComponent {
     // está comprando é menor do que ele possui
     _verifyAmount(form) {
 
-        if (this.isBuying && this._calculateValue(form.value.quantity) > this.currencyOptions[0].currentlyValue) {
-            this.toastr.error('Saldo insuficiente para realizar esta operação', 'Erro na operação!');
-            return;
-        }
-
-        if (!this.isBuying && form.value.quantity > this.currencyOptions[form.value.currency].currentlyValue) {
+        if (this.isBuying && this._calculateValue(form.value.quantity) > this.currencyOptions[0].currentlyValue ||
+            !this.isBuying && form.value.quantity > this.currencyOptions[form.value.currency].currentlyValue) {
             this.toastr.error('Saldo insuficiente para realizar esta operação', 'Erro na operação!');
             return;
         }

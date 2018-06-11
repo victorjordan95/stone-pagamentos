@@ -7,7 +7,8 @@ Este projeto tem como objetivo a criação de uma carteira digital, sendo o proj
 ## Carteira Digital
 
 Wallestone é uma aplicação Web de carteira digital, desenvolvida com o intuito de ser o teste para a vaga de front-end que serve como intermédio para compra, venda e troca das moedas digitais Britas e Bitcoin. 
-A aplicação tem como objetivo ser um progressive web app (PWA), isto é, uma aplicação web construída com tecnologias para se comportar como aplicativos nativos. 
+A aplicação tem como objetivo ser um progressive web app (PWA), isto é, uma aplicação web construída com tecnologias para se comportar como aplicativos nativos.
+Esta aplicação pode ser visualizada on-line graças ao [Firebase](https://firebase.google.com/) através [deste link](http://stone-front.firebaseapp.com)
 
 ## Requerimento/Dependências
 
@@ -26,8 +27,6 @@ Para rodar em sua própria máquina, é necessário executar no terminal o coman
 A aplicação tem como principal objetivo ser uma carteira digital para o usuário, onde possa realizar operações entre as moedas determinads. 
 Podemos citar algumas possívels melhorias futuras, como por exemplo a criação do infinite scroll para melhorar a usabilidade e melhorar ainda mais o webapp no quesito de progressive web app. 
 Algumas destas melhorias já estão cadastradas no backlog, como pode ser visto no [Trello do projeto](https://trello.com/b/9Ez9admf/stone-pagamentos). O kanban está aberto e toda sugestão será muito bem aceita!
-
-## Status do Código
 
 ## Licença
 

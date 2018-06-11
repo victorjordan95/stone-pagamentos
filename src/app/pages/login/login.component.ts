@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
                 } else {
                     this.toastr.error('Ocorreu um erro ao acessar a aplicação', 'Erro ao acessar!');
                 }
+                this.isLoaded = true;
             });
 
         f.controls.email.setValue('');
